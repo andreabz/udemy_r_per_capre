@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+/*_files/
 
 *.html
 
@@ -9,3 +10,5 @@
 /data/gi_comuni_cap.csv
 
 /R/make_data.R
+
+editing.qmd
