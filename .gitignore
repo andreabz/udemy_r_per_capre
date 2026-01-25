@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+*.html
+
+/data/dati_raw.csv
+/data/gi_comuni_cap.csv
+
+/R/make_data.R

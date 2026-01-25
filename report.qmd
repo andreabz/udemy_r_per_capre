@@ -1,0 +1,352 @@
+--- 
+title: "Numero di campioni e tempi di analisi per il metodo `r params$method` nell'anno `r params$year`" 
+format: 
+  html: 
+    embed-resources: true 
+lang: it 
+execute: 
+  echo: true 
+  warning: false
+  error: false 
+params: 
+  method: "CHEM5421c" 
+  year: 2024
+  target: 15
+--- 
+
+# Introduzione 
+
+In questa esercitazione analizzeremo il numero di campioni e i tempi di analisi 
+relativi a un metodo analitico specifico, nell'arco di un intero anno. 
+
+L'obiettivo è duplice: 
+
+- prendere confidenza con un flusso di lavoro tipico in R (download dei dati, 
+pulizia, trasformazioni, aggregazioni); 
+- produrre una sintesi grafica che permetta di valutare l'andamento 
+temporale del carico di lavoro e delle prestazioni analitiche. 
+
+Il documento è parametrizzato: modificando i parametri `method`, `target` e 
+`year` è possibile riutilizzare lo stesso codice per analizzare metodi, 
+con obiettivi diversi in anni diversi, senza dover intervenire manualmente 
+sul resto del codice. 
+
+# Librerie utilizzate 
+
+Iniziamo caricando le librerie necessarie. Useremo: 
+
+- `data.table` per la gestione efficiente dei dati tabellari;
+- `ggplot2` per la produzione dei grafici; 
+- `patchwork` per combinare più grafici in un'unica figura.
+
+Nel resto dell'esercitazione vedremo passo per passo il significato dei 
+vari comandi, cercando di introdurre tutti i concetti che ci serviranno, 
+man mano che li incontreremo.
+
+```{r}
+#| label: librerie
+
+library(readxl)      # carica dati da file excel
+library(data.table)  # manipola i dati
+library(ggplot2)     # crea grafici
+library(patchwork)   # unisce grafici
+library(knitr)       # genera documenti e tabelle
+```
+
+# Download dei dati 
+
+Utilizzeremo dati simulati contenuti in due dataset:
+
+- `dati_campioni.xlsx` è un foglio di calcolo contenente i dati relativi a misure effettuate in un laboratorio chimico con tre metodi differenti;
+- `comuni_al.csv` è un file di testo con valori separati da virgole contenente informazioni sui comuni in provincia di Alessandria.
+
+I due dataset sono in relazione attraverso i punti di prelievo dei campioni: 
+un comune è associato a uno o più punti di prelievo, i quali sono associati a più campioni.
+
+```{r}
+#| label: carico_dati
+
+misure <- read_excel("data/dati_campioni.xlsx") # leggo l'excel con readxl
+misure <- data.table(misure)                    # converto a data.table
+elenco_comuni <- fread("data/comuni_al.csv")    # anche con read.csv(), senza librerie esterne
+```
+
+# Esplorazione e pulizia dei dati
+
+Dopo un primo controllo della struttura dei dati (ad esempio con `str()`), 
+emergono alcune criticità tipiche dei dataset reali: 
+
+- le colonne di intestazioni contengono spazi e maiuscole;
+- la data di campionamento è memorizzata come caratteri e non come oggetti `Date`;
+- la colonna dei valori misurati è stata riportata come carattere;
+- i valori e le note mancanti non sono correttamente codificate;
+- i valori sono memorizzati come testo e non come numeri.
+
+In questa sezione sistemiamo questi aspetti, rendendo il dataset coerente e 
+pronto per le analisi successive. Questo passaggio è fondamentale: 
+una buona pulizia dei dati semplifica enormemente le analisi successive e 
+riduce il rischio di errori silenziosi, cioè errori che non producono messaggi
+ma risultati sbagliati.
+
+```{r}
+#| label: pulizia
+
+# dopo str() vedo che alcune cose non funzionano:
+# - le intestazioni contengono caratteri scomodi
+# - le date non sono date
+# - L maiuscola di litri, non si può vedere
+# - i valori mancanti non sono correttamente codificati
+# - i numeri non sono numeri
+
+# intestazioni minuscole e pulite
+colnames(misure) <- gsub(pattern = " ", replacement = "_", colnames(misure))
+colnames(misure) <- trimws(colnames(misure))
+colnames(misure) <- colnames(misure) |> tolower()
+
+# date come date e non come carattere
+misure[, `:=` (
+  data_campionamento = as.IDate(data_campionamento, format = "%d/%m/%Y"), # anche con as.Date e altri modi
+  inizio_analisi = as.IDate(data_inizio_analisi),
+  fine_analisi = as.IDate(data_fine_analisi),
+  data_inizio_analisi = NULL,
+  data_fine_analisi = NULL
+  )]
+
+# converto la L in l in udm
+misure[, unita_di_misura := gsub("L", "l", unita_di_misura)]
+
+# identifico i valori mancanti
+misure[valore == "valore mancante", valore := NA]
+misure[note == "-", note := NA]
+
+# identifico i valori inferiori al limte di quantificazione:
+# sono numeri positivi di cui conosco solo il limite superiore
+# a seconda delle esigenze vengono sostituiti con un valore
+# in questo caso usiamo la metà del limite di quantificazione
+# e creo una colonna identificativa con
+#    - FALSE per i valori inferiori al limite di quantificazione
+#    - TRUE per i valori superiori al limite di quantificazione
+misure[, quantificato := !grepl("^<", valore)]
+misure[quantificato == FALSE, valore := limite_quantificazione / 2]
+
+# finalmente converto a numeri
+misure[, valore := as.numeric(valore)]
+```
+
+# Calcolo delle variabili di interesse
+
+Una volta che i dati sono in ordine, costruiamo alcune variabili derivate:
+
+- il mese di inizio dell'analisi, utile per le aggregazioni temporali
+- il tempo di analisi, definito come la differenza tra la data di fine e 
+la data di inizio analisi;
+- il tempo di processamento complessivo, calcolato come differenza 
+tra la data di fine e la data di campionamento.
+
+Queste variabili ci permetteranno di studiare sia il volume di lavoro 
+sia la distribuzione dei tempi nel corso dell'anno.
+
+```{r}
+#| label: calcoli
+
+# voglio vedere l'andamento mensile del numero di campioni e tempi di analisi:
+# - calcolo i mesi
+# - calcolo i tempi di analisi
+# - calcolo i tempi di processamento
+
+misure[, mese_inizio_analisi := month(inizio_analisi)]
+misure[, tempo_processamento := fine_analisi - data_campionamento]
+misure[, tempo_analisi := fine_analisi - inizio_analisi]
+```
+
+# Aggregazione mensile
+
+Per rendere i dati più leggibili, aggreghiamo le informazioni a livello mensile.
+
+In particolare, per ciascun mese calcoliamo:
+
+- il numero di campioni analizzati;
+- il tempo mediano di analisi;
+- un intervallo dei tempi di analisi, escludendo i casi estremamente veloci e
+quelli estremamente lenti (10°–90° percentile).
+
+Questo approccio consente di descrivere l'andamento tipico dei tempi di analisi
+senza essere troppo influenzati da valori anomali.
+
+```{r}
+#| label: aggrego
+
+# riassumo i tempi mensili di modo da ottenere:
+# - il numero di campioni;
+# - il tempo di analisi mediano
+# - il tempo di analisi dell'80% dei campioni, 
+#   escludendo il 10% dei campioni velocissimi e 
+#   il 10% dei campioni lentissimi
+
+riassunto <- misure[id_metodo == params$method,
+              .(
+                campioni = uniqueN(id_campione),
+                analisi_mediana = median(tempo_analisi |> as.numeric()),
+                analisi_veloce = quantile(tempo_analisi, 0.10),
+                analisi_lenta = quantile(tempo_analisi, 0.90)
+                ),
+              by = .(mese_inizio_analisi)]
+
+# i mesi non sono semplici numeri,
+# sono elementi di un fattore ordinato
+riassunto[, mese_inizio_analisi := factor(mese_inizio_analisi, 
+                                          levels = 1:12,
+                                          labels = month.abb)]
+```
+
+# Visualizzazione dei risultati
+
+Proseguiamo l'esercitazione con una rappresentazione grafica dei risultati:
+
+- il primo grafico mostra l'andamento mensile del numero di campioni;
+- il secondo grafico riassume la distribuzione dei tempi di analisi tramite 
+mediana e percentili.
+
+La combinazione dei due grafici permette di valutare visivamente se esiste una
+relazione tra carico di lavoro e tempi di analisi, e di individuare eventuali
+periodi critici dell'anno.
+
+È importante ricordare che i grafici mostrano andamenti aggregati: 
+eventuali anomalie o picchi andrebbero approfonditi tornando ai dati di dettaglio.
+
+```{r}
+#| label: fig-grafico
+#| fig-cap: "Andamento mensile del numero di campioni e tempi di analisi"
+
+n_campioni <- ggplot(riassunto,
+                     aes(x = mese_inizio_analisi,
+                         y = campioni)) +
+              geom_point() +
+              scale_y_continuous(breaks = function(x) floor(pretty(x))) +
+              labs(x = "Mese di inizio analisi",
+                   y = "Numero di campioni analizzati") +
+              theme_minimal()
+
+tempi <- ggplot(riassunto,
+                aes(x = mese_inizio_analisi,
+                    ymin = analisi_veloce,
+                    ymax = analisi_lenta,
+                    y = analisi_mediana)) +
+         geom_pointrange() +
+         geom_hline(yintercept = params$target, col = "red", linetype = "dashed") +
+         scale_y_continuous(breaks = function(x) floor(pretty(x))) +
+         labs(x = "Mese di inizio analisi",
+              y = "Tempo di analisi in giorni\n(10°–50°–90° percentile)") +
+         theme_minimal()
+
+n_campioni / tempi + plot_layout(axes = "collect")
+```
+
+Posso aggiungere anche del testo contenente dei calcoli in linea.
+Per esempio, per il metodo `r params$method`,
+nel `r params$year` il numero dei campioni con tempi di analisi superiori
+all'obiettivo di `r params$target` giorni è stato 
+`r misure[id_metodo == params$method & tempo_analisi > params$target, uniqueN(id_campione)]`, 
+su un totale di `r misure[id_metodo == params$method, uniqueN(id_campione)]` 
+campioni analizzati.
+
+# Unire più fonti di dati
+
+Spesso non tutti i dati che ci servono sono nello stesso file.
+
+Nel nostro caso abbiamo caricato all'inizio dell'esercitazione `elenco_comuni` 
+dove è disponibile la corrispondenza tra punti di campionamento e comuni. 
+Combiniamo queste informazioni attraverso la funzione `merge` di `data.table`.
+In altri linguaggi come SQL, lo stesso concetto compare sotto il termine `join`.
+
+```{r}
+#| label: unire
+
+misure_completo <- merge(misure,                           # primo dataset
+                         elenco_comuni,                    # secondo dataset
+                         # sono in relazione attraverso una colonna che
+                         # ha gli stessi valori in entrambi i dataset,
+                         # ma ha nomi diversi
+                         by.x = "punto_di_campionamento",  # nome nel primo dataset
+                         by.y = "punti_di_misura")         # nome nel secondo dataset
+```
+
+Questo tipo di operazione è spesso critica in quanto si possono perdere o
+moltiplicare righe.
+Verifichiamo sempre con `nrow()` il numero di righe dei dataset di partenza e
+quelle del dataset unito.
+
+In questo caso il numero di righe del dataset unito (`misure_completo`)
+combacia con quelle del dataset `misure`, 
+mentre è molto maggiore del numero di righe del dataset `elenco_comuni`:
+alcuni punti di campionamento saranno stati indagati con più campioni.
+
+Un'altra verifica spesso importante è che non ci siano punti di campionamento non associati a campioni o campioni non associati a un punto di campionamento.
+
+
+```{r}
+#| label: verifiche
+#| include: false
+
+# numero di righe
+nrow(misure)
+nrow(elenco_comuni)
+nrow(misure_completo)
+
+# assenza di corrispondenze
+misure_completo[is.na(id_campione)]
+misure_completo[is.na(punto_di_campionamento)]
+misure_completo[is.na(denominazione_ita)]
+```
+
+# Tabelle
+
+A questo punto possiamo riassumere il numero di campioni indagati per ogni comune,
+il numero di misure con esito non conforme e il numero di misure
+per il quale non è stato possibile consegnare un risultato a causa
+di problemi tecnici all'interno del laboratorio.
+
+
+```{r}
+#| label: riassunto_comune
+
+riassunto_comune <- misure_completo[id_metodo == params$method,
+                    .(
+                      # questo è il numero di campioni
+                      campioni_analizzati= uniqueN(id_campione),
+                      # questo è il numero di misure non conformi
+                      misure_non_conformi = sum(!conforme, na.rm = TRUE),
+                      # questo è il numero di misure fallite
+                      misure_fallite = sum(is.na(valore))
+                    ),
+                    by = denominazione_ita]
+
+# cambio il nome delle colonne
+riassunto_comune[, `:=` (
+  comune = denominazione_ita,
+  denominazione_ita = NULL
+)]
+
+# riordino le colonne
+riassunto_comune <- riassunto_comune[order(-campioni_analizzati), 
+                      .(
+                        comune, 
+                        campioni_analizzati,
+                        misure_non_conformi,
+                        misure_fallite
+                       )]
+```
+
+Presento il risultato sotto forma di tabella.
+
+
+```{r}
+#| label: tbl-riassunto-comune
+#| tbl-cap: "Riassunto dei campioni analizzati, delle misure non conformi e fallite per ogni comune."
+
+kable(riassunto_comune,
+        col.names = c("Comune",
+                      "Campioni analizzati",
+                      "Misure non conformi",
+                      "Misure fallite"))
+```
