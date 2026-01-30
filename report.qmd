@@ -35,9 +35,11 @@ sul resto del codice.
 
 Iniziamo caricando le librerie necessarie. Useremo: 
 
+- `readxl` per caricare i dati da file Excel;
 - `data.table` per la gestione efficiente dei dati tabellari;
 - `ggplot2` per la produzione dei grafici; 
-- `patchwork` per combinare più grafici in un'unica figura.
+- `patchwork` per combinare più grafici in un'unica figura;
+- `knitr` per generare tabelle all'interno di documenti.
 
 Nel resto dell'esercitazione vedremo passo per passo il significato dei 
 vari comandi, cercando di introdurre tutti i concetti che ci serviranno, 
