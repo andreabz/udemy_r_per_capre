@@ -9,9 +9,9 @@ execute:
   warning: false
   error: false 
 params: 
-  method: "CHEM5421c" 
+  method: "CHEM0543d" 
   year: 2024
-  target: 15
+  target: 6
 --- 
 
 # Introduzione 
