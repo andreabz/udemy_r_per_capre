@@ -1,0 +1,107 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 20 - opzioni e formati"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio impariamo a generare il nostro report in **diversi formati** (HTML, PDF, Word) e a usare alcune opzioni pratiche dei chunk R per migliorare leggibilità e pulizia.
+
+
+## Output di Quarto
+
+Specifichiamo l'output nel preambolo del report
+
+```yaml
+format: html
+```
+
+Al posto di `html` possiamo metterne altri:
+
+- HTML: leggibile su browser, condivisibile, interattivo
+- PDF: ottimo per stampa o archiviazione
+- Word (docx): facile da inviare a colleghi ma è modificabile, quindi è meglio usarlo solo per bozze, altrimenti si perde la riproducibilità.
+
+**Nota:** puoi generare uno o tutti i formati con lo stesso file `.qmd`.
+
+### File PDF
+
+Per ottenere file PDF è necessario avere una distribuzione LaTeX installata sul sistema. Io consiglio `TinyTeX`, installabile direttamente da R:
+
+```{r}
+#| eval: false
+
+install.packages("tinytex")
+library(tinytex)
+install_tinytex()
+```
+
+### File Word
+
+Per poter ottenere e visualizzare file `docx` è necessario avere Office, LibreOffice o OpenOffice installato.
+
+### Altri formati
+
+Con Quarto si possono ottenere anche altri formati con presentazioni in HTML o PowerPoint oppure poster. Qui <https://quarto.org/docs/output-formats/all-formats.html> trovate l'elenco completo.
+
+**Attenzione:** talvolta passando da un formato all'altro è necessario qualche aggiustamento per garantire una buona leggibilità. Capita frequentemente con tabelle e grafici complessi.
+
+## Chunk di R: opzioni principali
+
+| Opzione | Significato |
+|---------|-------------|
+| `echo: true/false` | Mostra o nasconde il codice R |
+| `error: false` | Nasconde errori |
+| `warning: false` | Nasconde avvisi |
+| `message: false` | Nasconde messaggi (es. caricamento pacchetti) |
+| `results: 'asis'` | Permette output “puro”, utile per tabelle HTML/Markdown |
+| `label: nome`    | Permette di dare un nome a un chunk |
+| `fig-width` e `fig-height` | Dimensione delle figure |
+| `fig-cap` | Didascalia delle figure |
+
+`echo`, `warning` e `message` si possono specificare anche nel preambolo:
+
+```yaml
+execute: 
+  echo: true 
+  warning: false
+  error: false 
+```
+
+## Suggerimenti pratici
+
+1. Usa `echo: false` per pulire i report destinati ai colleghi/clienti  
+2. Evita chunk troppo lunghi: se necessario, dividili  
+3. Dai nomi chiari ai chunk con `label:` per facilitare debug e revisione  
+4. Controlla output multipli per assicurarti che grafici e tabelle siano coerenti in tutti i formati
+
+
+## Per approfondire
+
+- Documentazione opzioni chunk: <https://quarto.org/docs/computations/execution-options.html>
+
+## In sintesi
+
+- YAML + `format` = definisci HTML, PDF, Word dallo stesso file  
+- Chunk R con opzioni = report pulito, leggibile e flessibile  
+- Controlla sempre il risultato in tutti i formati
+

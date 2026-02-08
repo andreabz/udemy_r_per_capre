@@ -1,0 +1,135 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per gli episodi 18 e 19 - la fabbrica di report"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questi episodi abbiamo imparato a rendere il nostro report **parametrico** e a generarlo in serie per diversi dataset usando `quarto_render()` in un ciclo `for`.
+
+- **Parametri**: valori che cambiano da report a report senza modificare il codice interno  
+- **Ciclo `for` + `quarto_render()`**: metodo per generare **più report automaticamente**
+
+## Parametri in Quarto
+
+Nei report Quarto possiamo definire **parametri** nel YAML:
+
+```yaml
+---
+title: "Numero di campioni e tempi di analisi"
+format: html
+params: 
+  method: "CHEM0543d" 
+  year: 2024
+  target: 6
+---
+```
+
+All'interno del report userò
+
+```{r}
+#| eval: false
+
+misure[id_metodo == params$method,
+              .(
+                campioni = uniqueN(id_campione),
+                analisi_mediana = median(tempo_analisi |> as.numeric()),
+                analisi_veloce = quantile(tempo_analisi, 0.10),
+                analisi_lenta = quantile(tempo_analisi, 0.90)
+                ),
+              by = .(mese_inizio_analisi)]
+```
+
+per accedere ai soli dati del metodo specificato con `params$method`.
+
+- Cambiando `params$method` o `params$target`, il report si aggiorna senza toccare il codice R.
+- Utile per avere una fabbrica di report con una struttura simile ma per metodi e target differenti.
+
+## Ciclo `for` e `quarto_render()`
+
+Supponiamo di voler generare i report per tutti i metodi e i relativi tempi target:
+
+```{r}
+#| eval: false
+
+# Ricorda di scrivere install.packages("quarto")
+# Carico la libreria
+library(quarto)
+
+# elenco i metodi per cui voglio ottenere un report
+metodi <- c(
+  "CHEM5421c",
+  "CHEM0543d",
+  "CHEM0214i"
+)
+# elenco dei tempi target
+obiettivi <- c(15, 6, 3)
+
+# combinazioni
+combinazioni <- data.frame(metodi = metodi, obiettivi = obiettivi)
+
+# ciclo di rendering
+for (riga in 1:nrow(combinazioni)) {
+  metodo <- combinazioni$metodi[riga]
+  target <- combinazioni$obiettivi[riga]
+
+  # Nome finale dell'HTML (solo il nome)
+  output_file <- paste0("report_", tolower(metodo), "_2024.html")
+
+  # Render
+  quarto_render(
+    input = "report.qmd",
+    execute_params = list(method = metodo, target = target),
+    output_file = output_file
+  )
+}
+```
+
+- `combinazioni` contiene i nomi dei diversi metodo i rispettivi tempi target
+- `output_file` è il nome del file in cui verrà salvato il report
+- `quarto_render()` prende il report e passa i metodi e i target da applicare
+- `for` ripete le operazioni tra le `{}` per ogni riga di `combinazioni`
+
+## Vantaggi
+
+- Zero copia/incolla: non serve aprire Excel e Word manualmente
+- Scalabilità: basta aggiungere nuovi mesi o dataset
+- Riproducibilità: ogni report è generato in modo coerente e automatico
+- Aggiornamento semplice: cambia i dati o i parametri, rigenera i report
+
+## Controlli
+
+- Verifica che i nomi dei parametri nel `YAML` coincidano con quelli passati in `execute_params`
+- Evita spazi o caratteri speciali nei nomi dei report generati
+- Mantieni lo stesso formato di dataset per tutti i report
+
+## In sintesi
+
+- Parametri = valori dinamici che cambiano il report senza toccare il codice
+- `quarto_render()` + `for` = fabbrica di report
+
+Questo approccio è la chiave per risparmiare tempo e ridurre errori
+
+Con questi episodi è stata mantenuta la promessa fatta all'inizio del corso:
+
+> basta fare copia-incolla da fogli Excel a Word
+> basta fare report sempre uguali

@@ -1,0 +1,80 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 17 - tabelle con `kable`"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio abbiamo imparato a creare **tabelle leggibili** nei report con la funzione `kable()` del pacchetto `knitr`.
+
+Non serve conoscere tutte le opzioni di `kable`.
+Serve sapere **come trasformare una tabella grezza in qualcosa di chiaro e pronto per il report**.
+
+## Perché `kable`
+
+Quando esportiamo tabelle nei report HTML (o PDF/Word):
+
+- le tabelle di default di R sono brutte e poco leggibili
+- `kable()` produce tabelle **pulite e professionali**
+- si integra perfettamente con Quarto
+
+## Sintassi base
+
+```{r}
+#| eval: false
+
+# ricorda di installare il pacchetto con install.packages("knitr")
+library(knitr)
+
+kable(riassunto_comune,
+        col.names = c("Comune",
+                      "Campioni analizzati",
+                      "Misure non conformi",
+                      "Misure fallite"))
+```
+
+- `riassunto_comune` è il dataset
+- `col.names` elenca come vogliamo rinominare le colonne solo per mostrarle nel report
+- `c()` crea un vettore, all'interno si mettono testi virgolettati o numeri separati da virgole.
+
+## Argomenti opzionali
+
+- `digits` regola il numero di cifre decimali da mostrare
+- `align` permette di specificare l'allineamento per le varie colonne
+- `booktabs = TRUE` permette una migliore resa delle tabelle in documenti PDF.
+
+## Per approfondire
+
+- `?kable` dopo aver installato e caricato il pacchetto `knitr`.
+
+## In sintesi
+
+- `kable()` trasforma un data frame in una tabella leggibile
+- poche opzioni bastano per ottenere un risultato professionale
+- il report resta aggiornabile automaticamente con i nuovi dati
+
+Con questo episodio abbiamo soddisfatto l'ultimo requisito del nostro report e abbiamo ottenuto
+
+> Una tabella con:
+>
+> - numero di campioni, analisi e loro esito per ogni comune.
+

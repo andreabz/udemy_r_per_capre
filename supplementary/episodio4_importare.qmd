@@ -1,0 +1,130 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per gli episodi 4 e 5 - importare i dati"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questi episodi abbiamo importato dati da file esterni:
+
+- un file CSV
+- un file Excel
+
+Nel corso i dati non vengono mai inseriti a mano.
+Arrivano sempre da file già esistenti, come succede nel lavoro reale.
+
+Questo documento serve come riferimento rapido quando:
+
+- devi ricordare **quale funzione usare**
+- qualcosa “non torna” subito dopo aver letto un file
+
+Non è una guida completa all'importazione dati: è il minimo indispensabile per far funzionare il report.
+
+## Dove stanno i dati nel progetto
+
+Nel progetto del corso i dati stanno nella cartella: `data/`
+
+Dentro trovi:
+
+- file CSV
+- file Excel
+
+I file nella cartella `data/`:
+
+- sono input del report
+- **non vanno modificati**
+- vengono letti così come sono
+
+Il report e gli script devono adattarsi ai dati, non il contrario.
+
+## Importare dati da CSV
+
+Per i file csv utilizziamo la funzione `read.csv()`.
+
+```{r}
+#| eval: false
+
+elenco_comuni <- read.csv("data/comuni_al.csv")
+```
+
+Questa funzione ha come primo argomento il percorso del file da caricare, poi è possibile specificare:
+
+- `header = FALSE` se il file non presenta nomi di colonna
+- `sep = ";"` se il separatore tra campi è punto e virgola anziché virgola
+- `dec = ","` se il separatore decimale è virgola anziché punto
+- `encoding = "Latin-1"` se ho accenti strani o caratteri all'interno del file
+- tanti altri argomenti che puoi conoscere e provare facendoti aiutare da R scrivendo `?read.csv` nella console di RStudio, come vedrai nell'episodio 8.
+
+Il risultato sarà una tabella che, nel gergo di R, si chiama `data.frame`.
+
+## Importare dati da Excel
+
+Per i file Excel utilizziamo la libreria `readxl`.
+
+La installiamo con `install.packages(readxl)` e poi scriviamo:
+
+```{r}
+#| eval: false
+
+library(readxl)
+
+misure <- read_excel("data/dati_campioni.xlsx")
+```
+
+Anche questa funzione restituisce una tabella e prende come primo argomento il percorso del file. Altri argomenti includono il nome del foglio e il range di celle che contengono i dati: li puoi conoscere tutti digitando `?read_excel` all'interno della console, dopo aver installato e caricato il pacchetto `readxl`.
+
+Nell'episodio 6 vedremo come dare un'occhiata ai dati appena importati e nell'episodio 9 sostituiremo `read.csv()` con la funzione `fread()` di `data.table`.
+
+## Errori comuni
+
+La fase di importazione è spesso una delle più delicate: non aspettarti che vada tutto bene al primo tentativo, dovrai fare qualche prova per trovare i giusti parametri per gli argomenti.
+
+Gli errori più frequenti sono:
+
+- date lette come testo
+- numeri letti come caratteri
+- nomi delle colonne con spazi o maiuscole
+- gestione errata dei caratteri accentati.
+
+Nel corso non risolviamo tutto subito, prima importiamo e poi, negli episodi successivi, sistemiamo i problemi uno per uno.
+
+## Dove questi dati vengono usati
+
+I dati importati qui verranno poi usati per:
+
+- esplorazione
+- pulizia
+- aggregazioni
+- grafici
+- report automatici
+- rendering in serie
+
+Se l'importazione è corretta, tutto il resto fila.
+
+## In sintesi
+
+- i dati stanno nella cartella `data/`
+- CSV → `read.csv()` (almeno per ora)
+- Excel → `read_excel()`
+- Scopriremo come controllare i risultati nei prossimi episodi
+
+Questo è tutto quello che serve sapere a questo punto del corso.

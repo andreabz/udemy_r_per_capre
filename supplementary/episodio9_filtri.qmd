@@ -1,0 +1,119 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 9 - `data.table` e filtri"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio iniziamo a **lavorare davvero sui dati**.
+
+- Non facciamo ancora analisi.
+- Non costruiamo grafici.
+- Non calcoliamo indicatori.
+
+Impariamo a filtrare righe.
+
+Useremo la sintassi di `data.table`.
+
+## Cos’è `data.table`
+
+`data.table` è una versione potenziata del `data.frame`.
+
+Nel corso lo usiamo perché:
+
+- è veloce
+- è compatto
+- è molto espressivo
+
+Ma soprattutto:
+**obbliga a essere chiari su cosa stiamo facendo**.
+
+
+## La struttura fondamentale: `DT[i, j, by]`
+
+La sintassi base è sempre questa:
+
+```
+DT[i, j, by]
+```
+
+dove:
+
+- `DT` è il dataset
+- `i` è una condizione per selezionare le righe
+- `j` permette di scegliere o modificare le colonne
+- `by` permette di raggruppare le righe per fare calcoli
+
+## Creare un filtro
+
+I filtri si scrivono nell'argomento `i` di `data.table` come condizioni.
+
+Le condizioni possono essere del tipo:
+
+- il metodo deve essere CHEM0543d
+- il metodo non deve essere CHEM0543d
+- il limite di quantificazione deve essere maggiore di 10
+
+Le condizioni vengono scritte come:
+
+```
+dove operatore come
+```
+
+- `dove` è il nome di una colonna
+- `operatore` esprime la relazione che vogliamo imporre tra `dove` e `come`
+- `come` è il valore della condizione da soddisfare.
+
+Per esempio, il metodo deve essere CHEM0543d lo traduciamo come
+
+```{r}
+#| eval: false
+
+misure[id_metodo == "CHEM0543d"]
+```
+
+## Operatori comuni
+
+- `==` quello che è a destra deve essere esattamente uguale a quello a sinistra (maiuscol e minuscole incluse)
+- `!=` quello che è a destra deve essere esattamente diverso da quello a sinistra
+- `%like%` quello che è a destra deve contenere quello a sinistra
+- `%in%` quello a sinistra deve essere uno dei valori specificati a destra
+- `<`, `<=`, `>`, `>=` quello a sinistra deve essere rispettivamente minore, minore o uguale, maggiore o maggiore uguale di quello contenuto a destra. **Usate questi operatori soltanto con numeri**.
+
+## Per approfondire
+
+Se vuoi andare oltre quanto visto nel corso:
+
+- nella console `browseVignettes("data.table")`, comincia da "Introduction to `data.table`"
+- per ricordare la sintassi stampa <https://rstudio.github.io/cheatsheets/datatable.pdf>
+
+Non è materiale obbligatorio.
+Serve solo quando vuoi capire perché qualcosa funziona così.
+
+## In sintesi
+
+- `DT[i, j, by]` è la struttura chiave
+- `i` filtra le righe
+- i filtri sono condizioni
+- esprimo le condizioni dicendo dove le voglio applicare e cosa debbono soddisfare
+
+Da qui in poi, stiamo davvero lavorando sui dati.

@@ -1,0 +1,110 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 6 - controllare i dati"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio non modifichiamo i dati: l'analisi deve ancora iniziare.
+
+Facciamo una cosa molto più semplice (e molto più importante):
+li guardiamo.
+
+L'obiettivo è rispondere a domande banali ma fondamentali:
+
+- che tipo di oggetto è questo?
+- quante righe e colonne ha?
+- come si chiamano le variabili?
+- che tipo di valori contengono?
+
+Se salti questo passaggio, difficilmente otterrai un report funzionante.
+
+## Guardare la struttura: `str()`
+
+Il primo comando da usare è sempre:
+
+```{r}
+#| eval: false
+
+str(misure)
+```
+
+`str()` mostra:
+
+- il tipo dell'oggetto (`data.frame`, `data.table`, ecc.)
+- il nome delle colonne
+- il tipo di ogni colonna (numero, testo, data, logico)
+- qualche valore di esempio
+
+Non serve capire tutto.
+Serve notare le cose strane.
+
+Esempi tipici:
+
+- date che sono testo (`chr`)
+- numeri che sono testo (`chr`)
+- colonne con nomi poco chiari
+
+## Quante righe e quante colonne
+
+
+```{r}
+#| eval: false
+
+nrow(misure)
+ncol(misure)
+```
+
+Servono per capire:
+
+- se i dati sono "pochi" o "tanti"
+- se manca qualcosa
+- se sono più o meno quelli che ti aspettavi
+
+## Vedere qualche dato
+
+Le prime dieci righe:
+
+```{r}
+#| eval: false
+
+head(misure)
+```
+
+Le ultime dieci righe:
+
+```{r}
+#| eval: false
+
+tail(misure)
+```
+
+Questi comandi servono solo ad aiutare a farci un'idea su come sono organizzati i dati su cui lavoreremo.
+
+## In sintesi
+
+- `str()` è il comando più importante
+- `head()` e `tail()` servono per vedere esempi concreti
+- `nrow()` e `ncol()` danno il contesto
+- nessuna modifica ai dati, per ora
+
+Questo episodio serve a orientarsi, non a risolvere problemi.

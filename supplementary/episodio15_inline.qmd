@@ -1,0 +1,110 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 15 - calcoli in linea"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio abbiamo visto come inserire **risultati di calcoli direttamente nel testo del report**.
+
+L'obiettivo è **non dover più aggiornare il testo a mano** quando cambiano i dati.
+
+## Il problema del testo scritto a mano
+
+Un report scritto manualmente contiene spesso frasi come:
+
+> Nel 2024 sono stati analizzati 123 campioni.
+
+Se:
+
+- cambiano i dati
+- cambia l'anno
+- cambia il metodo
+
+questa frase diventa **sbagliata** e devo ricorrere al copia-incolla selvaggio.
+
+## La soluzione: calcoli inline
+
+Quarto permette di inserire **codice R direttamente nel testo**, usando la sintassi ``` `r codice_R` ```.
+
+Il codice:
+
+- viene eseguito
+- il risultato viene inserito nel testo
+- non compare nel report finale
+
+## Esempio base
+
+```
+Nel `r params$year` sono stati analizzati 
+`r misure[id_metodo == params$method & 
+tempo_analisi > params$target, uniqueN(id_campione)]` 
+campioni con tempi di analisi superiori all'obiettivo 
+di `r params$target` giorni. 
+```
+
+Nel report finale comparirà una frase come:
+
+> Nel 2024 sono stati analizzati 65 campioni con tempi di analisi superiori
+all'obiettivo di 15 giorni.
+
+Senza scriverli a mano.
+
+## Cosa usare inline
+
+**Usare inline per:**
+
+- numeri singoli
+- conteggi
+- valori che entrano in una frase
+
+**NON usare inline per:**
+
+- codice lungo
+- trasformazioni complesse
+- calcoli difficili da leggere
+
+**Regola pratica:** se non riesci a leggerlo come una frase, non metterlo inline.
+
+## Perché è importante in un report automatico
+
+I calcoli inline permettono di:
+
+- mantenere coerenti testo, grafici e tabelle
+- evitare errori silenziosi
+- aggiornare il report cambiando solo dati o parametri
+
+## In sintesi
+
+- i calcoli inline inseriscono risultati nel testo
+- il codice non compare nel report
+- servono per evitare il copia-incolla
+- vanno tenuti semplici
+- si scrivono come ``` `r espressione` ```
+
+Se il testo si aggiorna da solo, il report ha fatto il suo lavoro.
+
+Con questo episodio abbiamo soddisfatto il secondo requisito del nostro report e abbiamo ottenuto
+
+> Calcolo nel testo:
+>
+> - numero di valori superiori al target

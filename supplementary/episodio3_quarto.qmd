@@ -1,0 +1,164 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 3 - la creazione del report"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio abbiamo introdotto Quarto, lo strumento che useremo per creare report.
+
+L'obiettivo non è imparare tutto Quarto.
+L'obiettivo è capire che tipo di oggetto stiamo costruendo.
+
+Questo documento serve come riferimento quando:
+
+- non ricordi cosa va nel “preambolo” del file
+- non è chiaro cosa sia codice e cosa sia testo
+- vuoi capire cosa puoi scrivere senza usare R
+
+
+## Cos’è Quarto
+
+Quarto serve a creare documenti che contengono:
+
+- testo
+- codice
+- risultati del codice
+
+Tutto nello stesso file.
+
+Il file che useremo ha estensione `.qmd` e permette di creare:
+
+- HTML
+- PDF
+- Word
+- slide in diversi formati, come PowerPoint
+
+Nel corso utilizzeremo HTML perché è leggibile, condivisibile e non richiede installazioni aggiuntive. Nell'episodio conclusivo vedremo però come creare anche PDF e Word.
+
+## Il file `report.qmd`
+
+Nel repository del corso troverai un file chiamato `report.qmd`: è il cuore del corso.
+
+Dentro `report.qmd` convivono tre cose diverse:
+
+- informazioni sul documento
+- testo descrittivo
+- codice R
+
+In questo episodio ci concentriamo solo sulle informazioni statiche ma alla fine del corso questo file produrrà un report completo e leggibile senza dover copiare nulla a mano. Inoltre, lo useremo come stampino per altri report analoghi.
+
+## Il preambolo (YAML)
+
+All’inizio del file `report.qmd` trovi una sezione delimitata da `---`.
+
+Ad esempio:
+
+```
+title: "Numero di campioni e tempi di analisi"
+format: html
+lang: it
+```
+
+Questa parte si chiama preambolo (o YAML).
+
+Serve a dire a Quarto:
+
+- che titolo deve avere il report
+- in che formato deve essere generato
+- che lingua usare
+
+Non è codice R e non viene "eseguita". È solo configurazione.
+
+## Informazioni statiche e dinamiche
+
+In questo corso distinguiamo sempre tra:
+
+### Informazioni statiche
+
+Sono informazioni che:
+
+- non cambiano quando cambiano i dati
+- non richiedono codice R
+
+Esempi:
+
+- titolo del report
+- introduzione testuale
+- spiegazioni
+- commenti
+
+Si scrivono come testo normale.
+
+### Informazioni dinamiche (più avanti)
+
+Sono informazioni che:
+
+- dipendono dai dati
+- cambiano da report a report
+
+Esempi:
+
+- numeri calcolati
+- risultati di analisi
+- grafici
+- tabelle
+
+Queste arriveranno più avanti e per il momento non ci servono ancora.
+
+## Testo Markdown
+
+Il testo nel file `report.qmd` si scrive in Markdown.
+
+```
+# Titolo
+## Sottotitolo
+
+Questo è un paragrafo.
+
+- elenco
+- puntato
+
+```
+Non serve imparare tutto Markdown, basta riconoscere che:
+
+- `#` indica un titolo
+- il testo è testo normale.
+
+## Per approfondire
+
+Quarto offre una documentazione molto ben scritta e corposa, la trovi a questo indirizzo <https://quarto.org/docs/guide/>.
+
+Non è pensata per essere letta dall'inizio alla fine.
+
+Usala come riferimento quando:
+
+- sai cosa stai cercando
+- vuoi approfondire un dettaglio
+- ti serve capire cosa è possibile fare oltre questo corso.
+
+Se aprendola ti sembra troppo ampia, è normale.
+Qui ci concentriamo solo su ciò che serve per costruire il nostro report.
+
+
+
+

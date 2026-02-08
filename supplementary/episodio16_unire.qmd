@@ -1,0 +1,139 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 16 - unire i dati"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio abbiamo unito dati provenienti da **più file**.
+
+Nella realtà infatti, spesso i dati non stanno mai tutti nello stesso file.
+
+L'obiettivo non è imparare tutti i tipi di unione.
+L'obiettivo è **ottenere una tabella completa e coerente per il report**.
+
+
+## Il problema reale
+
+Spesso abbiamo:
+
+- una tabella con **misure o risultati**
+- una tabella con **informazioni descrittive**
+
+Esempio:
+
+- `misure`: numeri, tempi, date
+- `elenco_comuni`: nomi leggibili, descrizioni
+
+Da sole:
+- i numeri non sono interpretabili
+- le descrizioni non hanno dati
+
+Serve **metterle insieme**.
+
+
+## La chiave: una colonna in comune
+
+Per unire due tabelle serve:
+
+- una colonna presente in entrambe
+- che rappresenti **la stessa cosa**
+
+Esempio:
+- codice del punto di campionamento
+- identificativo del sito
+- codice del campione
+
+Se questa colonna è sbagliata,  
+**l'unione sarà concettualmente sbagliata**, anche se il codice “funziona”.
+
+
+## Unire i dati con `merge()`
+
+Nel corso usiamo la funzione di R fornita da `data.table`:
+
+```{r}
+#| eval: false
+
+misure_complete <- merge(
+  misure,
+  elenco_comuni,
+  by.x = "punto_campionamento",
+  by.y = "codice_punto"
+)
+```
+
+Questo crea una nuova tabella che contiene:
+
+- tutte le colonne di `misure`
+- tutte le colonne di `elenco_comuni`
+- solo le righe che hanno corrispondenza
+- se avessi avuto dei campioni associati a punti di campionamento al di fuori dei comuni in `elenco_comuni` o comuni per i quali non erano stati prelevati campioni, non avrei trovato queste informazioni in `misure_completo`.
+
+Stiamo unendo solo quello che compare in entrambe le tabelle.
+
+## I controlli fondamentali
+
+Ogni volta che unisci dati, devi controllare.
+
+### Il numero di righe
+
+```{r}
+#| eval: false
+
+nrow(misure)
+nrow(elenco_comuni)
+nrow(misure_complete)
+```
+
+- se aumenta → stai duplicando dati
+- se diminuisce → stai perdendo dati
+- se è uguale → bene (ma non basta)
+
+### Valori mancanti
+
+```{r}
+#| eval: false
+
+misure_complete[is.na(nome_comune)]
+```
+
+Serve a verificare se:
+
+- alcune righe non hanno trovato corrispondenza
+- ci sono errori nei codici di collegamento
+
+Tutte le volte in cui ho preso lucciole per lanterne analizzando dati, la colpa era di una unione!
+
+## Per approfondire
+
+- nella console `browseVignettes("data.table")`, clicca su "Joins in `data.table`"
+
+## In sintesi
+
+- i dati spesso arrivano da file diversi
+- serve una colonna in comune per unirli
+- `merge()` è sufficiente per il nostro scopo
+- i controlli sono obbligatori
+- unire i dati aiuta a rendere l'analisi interpretabile
+
+Se i dati sono collegati bene, il report può finalmente parlare (e non dire scemate).
