@@ -35,8 +35,11 @@ Alla fine, avrai un report pronto da condividere o aggiornare semplicemente camb
 │ └── dati_campioni.xlsx # dati dei campioni e delle misure
 │
 ├── R/
-│ └── quarto_render.R # script per generare automaticamente i report
+│ ├── quarto_render.R # script per generare automaticamente i report
+| └── make_supplementary.R # script per generare il materiale di supporto
 │
+├── supplementary/ # documenti Quarto per il materiale di supporto
+|
 ├── report.qmd # documento Quarto principale
 └── README.md
 ```

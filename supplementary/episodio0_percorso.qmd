@@ -1,0 +1,133 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 0 - cosa dobbiamo fare"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+Questo corso non è una panoramica su R.  
+Non è un corso “enciclopedico”.  
+Non è nemmeno un corso di statistica.
+
+È un corso che ha **una consegna molto precisa**.
+
+Questo documento serve a chiarire, fin dall’inizio:
+
+- che tipo di report costruiremo
+- che problema concreto stiamo risolvendo
+- cosa devi aspettarti alla fine del corso
+
+Se questa consegna ti è chiara, tutto il resto diventa più semplice.
+
+
+## Il problema da cui partiamo
+
+Immagina una situazione molto comune:
+
+- hai dei dati in Excel o CSV
+- ogni mese (o settimana) arrivano nuovi file
+- devi fare sempre **lo stesso report**
+- copi numeri da Excel
+- incolli grafici in Word
+- sistemi tabelle a mano
+- speri di non sbagliare
+
+È noioso.  
+È lento.  
+È fragile.
+
+Ed è esattamente questo che vogliamo smettere di fare.
+
+## La consegna del corso
+
+**Costruiremo un report automatico che:**
+
+- parte da file Excel e CSV
+- elabora i dati in modo riproducibile
+- produce un report leggibile (HTML, e poi PDF/Word)
+- si aggiorna automaticamente quando cambiano i dati
+
+Il report non sarà un esercizio astratto.
+Sarà **realistico**.
+
+---
+
+## Che tipo di report costruiremo
+
+Il report finale rappresenta una situazione tipica da contesto lavorativo:
+
+### Contesto
+
+Un insieme di dati che descrivono:
+
+- campioni analizzati
+- tempi di analisi
+- distribuzione nel tempo
+
+### Contenuto del report
+
+Il report conterrà:
+
+- una introduzione testuale
+- uno o più grafici:
+  - andamento del numero dei campioni nel tempo
+  - andamento dei tempi di analisi nel tempo
+  - confronto con un valore target
+- una tabella riepilogativa con:
+  - numero di campioni analizzati per ogni comune della provincia di Alessandria
+
+Il tutto verrà ripetuto per diversi metodi di analisi e diversi target, in automatico.
+
+## Cosa NON faremo
+
+In questo corso:
+
+- non facciamo statistica avanzata  
+- non facciamo machine learning  
+- non impariamo tutto R  
+- non costruiamo dashboard interattive  
+
+Tutto ciò che non serve alla consegna viene lasciato fuori.
+
+## Cosa imparerai davvero
+
+Alla fine del corso saprai:
+
+- leggere dati da Excel e CSV
+- guardarli in modo sensato
+- pulirli quel tanto che basta
+- aggregarli
+- visualizzarli
+- inserirli in un report automatico
+- rigenerare lo stesso report più volte senza rifare il lavoro
+
+In altre parole: **passare dal foglio di calcolo al report automatico**.
+
+## In sintesi
+
+La consegna del corso è semplice:
+
+> Prendere dati ripetitivi  
+> smettere di copiarli a mano  
+> e produrre report automatici affidabili.
+
+Tutto il corso ruota attorno a questo.

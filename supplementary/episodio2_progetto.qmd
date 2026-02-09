@@ -18,6 +18,10 @@ format:
     toc: false
 ---
 
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
 ## Introduzione
 
 In questo episodio abbiamo creato un progetto in RStudio e scaricato i dataset dal repository GitHub del corso.

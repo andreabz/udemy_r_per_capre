@@ -1,0 +1,103 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Materiale di supporto per l'episodio 8 - chiedere aiuto"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+::: {.small}
+Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+:::
+
+## Introduzione
+
+In questo episodio abbiamo visto come chiedere aiuto quando ci blocchiamo.
+
+Durante la scrittura del codice possono esserci problemi di diversa natura, per ogni diversa tipologia ci sono strumenti diversi.
+
+
+## Caso 1: Non mi ricordo la sintassi
+
+So cosa voglio fare, ma non mi ricordo come si chiama l'argomento o come si scrive
+
+Esempio:
+
+> `mean()`… ma come si esclude `NA`?
+
+**Strumenti giusti:**
+
+- tooltip di RStudio
+- `?mean`
+- esempi nell’help
+
+## Caso 2: Non so se esiste una funzione
+
+So cosa voglio ottenere, ma non so se R ha già qualcosa per farlo
+
+Esempio:
+
+> Esiste un modo per leggere file Excel?
+
+**Strumento giusto:**
+
+- Google
+
+Qui cerchi idee, non soluzioni complete.
+Anche solo scoprire il nome di una funzione è già un successo.
+
+## Caso 3: Non so combinare i pezzi
+
+Conosco le funzioni, ma non riesco a incastrarle per ottenere il risultato
+
+Esempio:
+
+> Ho i dati, so filtrarli, so riassumerli… ma non insieme
+
+**Strumenti giusti:**
+
+- Stack Overflow
+- LLM come ChatGPT quando sarete più bravi
+
+Qui stai cercando schemi e modi di lavorare, non righe da copiare.
+
+## Caso 4: Il codice non funziona e non so perché
+
+> Ho scritto qualcosa, ma R si lamenta
+
+Qui entra in gioco la cosa più importante: scomporre il problema.
+
+Quando qualcosa non funziona, prima di chiedere aiuto:
+
+- prendi il codice che dà errore
+- elimina tutto quello che non serve
+- ricrea i dati in modo minimale
+- verifica che l’errore rimanga
+
+Quello che resta è un esempio minimo riproducibile.
+
+Questa operazione:
+
+- chiarisce il problema
+- spesso lo risolve da sola
+- ti rende aiutabile
+
+## In sintesi:
+
+- capisci il problema che hai
+- scegli lo strumento giusto
+- scomponi il codice
+
+Con questi passaggi avrai davvero il controllo su R e sui dati.
