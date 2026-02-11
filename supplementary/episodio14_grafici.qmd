@@ -37,6 +37,7 @@ Costruiamo **i grafici che servono al report**.
 I grafici che useremo partono da tabelle già riassunte, come quelle create nell'episodio precedente.
 
 Questo è importante:
+
 - il grafico **non fa i conti**
 - il grafico **mostra risultati già calcolati**
 
