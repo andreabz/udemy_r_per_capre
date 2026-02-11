@@ -66,10 +66,8 @@ Ed è esattamente questo che vogliamo smettere di fare.
 - produce un report leggibile (HTML, e poi PDF/Word)
 - si aggiorna automaticamente quando cambiano i dati
 
-Il report non sarà un esercizio astratto.
-Sarà **realistico**.
+Il report non è pensato per essere un esercizio astratto ma quanto più realistico possibile.
 
----
 
 ## Che tipo di report costruiremo
 
