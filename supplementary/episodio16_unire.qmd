@@ -45,6 +45,7 @@ Esempio:
 - `elenco_comuni`: nomi leggibili, descrizioni
 
 Da sole:
+
 - i numeri non sono interpretabili
 - le descrizioni non hanno dati
 
@@ -59,6 +60,7 @@ Per unire due tabelle serve:
 - che rappresenti **la stessa cosa**
 
 Esempio:
+
 - codice del punto di campionamento
 - identificativo del sito
 - codice del campione
