@@ -93,7 +93,7 @@ misure[id_metodo == "CHEM0543d"]
 
 ## Operatori comuni
 
-- `==` quello che è a destra deve essere esattamente uguale a quello a sinistra (maiuscol e minuscole incluse)
+- `==` (scritto come `=``=`) quello che è a destra deve essere esattamente uguale a quello a sinistra (maiuscol e minuscole incluse)
 - `!=` quello che è a destra deve essere esattamente diverso da quello a sinistra
 - `%like%` quello che è a destra deve contenere quello a sinistra
 - `%in%` quello a sinistra deve essere uno dei valori specificati a destra
