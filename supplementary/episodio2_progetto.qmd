@@ -29,6 +29,7 @@ In questo episodio abbiamo creato un progetto in RStudio e scaricato i dataset d
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 
 Questo documento serve come riferimento pratico quando:
+
 - non ricordi dove trovare un file
 - non sai cosa contiene una cartella
 - ti senti "perso" nel repository
