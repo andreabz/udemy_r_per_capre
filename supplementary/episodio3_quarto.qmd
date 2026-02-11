@@ -51,21 +51,23 @@ Il file che useremo ha estensione `.qmd` e permette di creare:
 - HTML
 - PDF
 - Word
-- slide in diversi formati, come PowerPoint
+- slide (ad esempio PowerPoint)
 
-Nel corso utilizzeremo HTML perché è leggibile, condivisibile e non richiede installazioni aggiuntive. Nell'episodio conclusivo vedremo però come creare anche PDF e Word.
+Nel corso useremo HTML perché è semplice da generare, leggibile e non richiede configurazioni aggiuntive.  
+Nell'episodio finale vedremo anche come produrre PDF e Word.
 
 ## Il file `report.qmd`
 
 Nel repository del corso troverai un file chiamato `report.qmd`: è il cuore del corso.
 
-Dentro `report.qmd` convivono tre cose diverse:
+Dentro `report.qmd` convivono tre elementi distinti:
 
 - informazioni sul documento
 - testo descrittivo
 - codice R
 
-In questo episodio ci concentriamo solo sulle informazioni statiche ma alla fine del corso questo file produrrà un report completo e leggibile senza dover copiare nulla a mano. Inoltre, lo useremo come stampino per altri report analoghi.
+In questo episodio ci concentriamo solo sulle informazioni statiche ma alla fine del corso questo file produrrà un report completo e leggibile senza dover copiare nulla a mano.
+Diventerà anche uno stampo riutilizzabile per report simili.
 
 ## Il preambolo (YAML)
 
@@ -145,7 +147,8 @@ Questo è un paragrafo.
 Non serve imparare tutto Markdown, basta riconoscere che:
 
 - `#` indica un titolo
-- il testo è testo normale.
+- il resto è testo normale
+- gli elenchi si scrivono con `-`
 
 ## Per approfondire
 
