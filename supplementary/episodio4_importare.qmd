@@ -34,7 +34,7 @@ Arrivano sempre da file già esistenti, come succede nel lavoro reale.
 
 Questo documento serve come riferimento rapido quando:
 
-- devi ricordare **quale funzione usare**
+- devi ricordare quale funzione usare
 - qualcosa “non torna” subito dopo aver letto un file
 
 Non è una guida completa all'importazione dati: è il minimo indispensabile per far funzionare il report.
