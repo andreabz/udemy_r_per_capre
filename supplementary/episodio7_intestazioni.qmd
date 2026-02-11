@@ -86,10 +86,10 @@ colnames(misure) <- gsub(" ", "_", colnames(misure))
 Qui stiamo dicendo:
 
 - prendi tutti i nomi con `colnames(misure)`
-- sostituisci gli spazi con _ `gsub(" ", "_", ...)`
+- sostituisci gli spazi con *underscore* `gsub(" ", "_", ...)`
 - riassegna il risultato alle colonne. `colnames(misure) <- ...`
 
-**Nota bene:** `<-` è una freccia ed è come dire uguale. Prende tutto quello che è alla sua destra e lo salva in quello che sta alla sua sinistra.
+**Nota bene:** `<-`, scritto `<``-` è una freccia ed è come dire uguale. Prende tutto quello che è alla sua destra e lo salva in quello che sta alla sua sinistra.
 
 In questo caso prendiamo i nomi delle colonne, facciamo la sostituzione e lo risalviamo all'interno dei nomi delle colonne.
 
@@ -131,7 +131,7 @@ colnames(misure) <- colnames(misure) |>
   tolower()
 ```
 
-`|>` è la pipe di R: prende il risultato della funzione alla sua sinistra e lo scarica nel primo argomento della funzione alla sua destra.
+`|>`, scritto `|``>` è la pipe di R: prende il risultato della funzione alla sua sinistra e lo scarica nel primo argomento della funzione alla sua destra.
 
 Nel caso volessi scaricare il risultato della funzione alla sua sinistra in un argomento diverso dal primo della funzione a destra, utilizzerò il segnaposto `_`.
 Qui lo uso con `gsub()` che vuole sapere dove fare la sostituzione come terzo argomento (`x = ...`), anziché come primo.
