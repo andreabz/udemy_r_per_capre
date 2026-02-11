@@ -74,9 +74,11 @@ All’inizio del file `report.qmd` trovi una sezione delimitata da `---`.
 Ad esempio:
 
 ```
+---
 title: "Numero di campioni e tempi di analisi"
 format: html
 lang: it
+---
 ```
 
 Questa parte si chiama preambolo (o YAML).
@@ -139,6 +141,7 @@ Questo è un paragrafo.
 - puntato
 
 ```
+
 Non serve imparare tutto Markdown, basta riconoscere che:
 
 - `#` indica un titolo
