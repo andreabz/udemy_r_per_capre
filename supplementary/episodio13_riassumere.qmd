@@ -35,11 +35,13 @@ Ma in un report non riporto tutti i dati, ne riporto un riassunto utile per capi
 ## Perché riassumere i dati
 
 Un dataset grezzo serve a:
+
 - lavorare
 - controllare
 - correggere
 
 Un report serve a:
+
 - capire
 - confrontare
 - decidere
@@ -58,14 +60,9 @@ In `data.table` questo si scrive inserendo
 - il criterio di raggruppamento in `by`
 - le statistiche di sintesi in `j`
 
-con l'ormai consueta sintassi
-
-```
-DT[i, j, by]
-```
+con l'ormai consueta sintassi `DT[i, j, by]`
 
 Facciamo un esempio:
-
 
 ```{r}
 #| eval: false
