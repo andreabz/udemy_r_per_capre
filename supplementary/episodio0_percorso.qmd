@@ -22,13 +22,14 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
+
 ## Introduzione
 
 Questo corso non è una panoramica su R.  
 Non è un corso “enciclopedico”.  
 Non è nemmeno un corso di statistica.
 
-È un corso che ha **una consegna molto precisa**.
+È un corso che ha una consegna molto precisa.
 
 Questo documento serve a chiarire, fin dall’inizio:
 
@@ -55,27 +56,34 @@ Immagina una situazione molto comune:
 È lento.  
 È fragile.
 
-Ed è esattamente questo che vogliamo smettere di fare.
+E soprattutto: non è riproducibile.
+
+Se tra sei mesi qualcuno ti chiede come hai calcolato un numero, la risposta non può essere che non ricordi".
 
 ## La consegna del corso
 
-**Costruiremo un report automatico che:**
+Costruiremo un report automatico che:
 
 - parte da file Excel e CSV
 - elabora i dati in modo riproducibile
 - produce un report leggibile (HTML, e poi PDF/Word)
 - si aggiorna automaticamente quando cambiano i dati
 
-Il report non è pensato per essere un esercizio astratto ma quanto più realistico possibile.
+L’obiettivo è semplice:
+
+dato un nuovo file, eseguire uno script e ottenere il report  
+senza copiare numeri  
+senza incollare grafici  
+senza rifare il lavoro a mano.
 
 
 ## Che tipo di report costruiremo
 
-Il report finale rappresenta una situazione tipica da contesto lavorativo:
+Il report finale simula una situazione lavorativa realistica.
 
 ### Contesto
 
-Un insieme di dati che descrivono:
+Dati che descrivono:
 
 - campioni analizzati
 - tempi di analisi
@@ -85,15 +93,19 @@ Un insieme di dati che descrivono:
 
 Il report conterrà:
 
-- una introduzione testuale
-- uno o più grafici:
-  - andamento del numero dei campioni nel tempo
-  - andamento dei tempi di analisi nel tempo
+- una breve introduzione testuale
+- grafici:
+  - andamento del numero di campioni nel tempo
+  - andamento dei tempi di analisi
   - confronto con un valore target
 - una tabella riepilogativa con:
   - numero di campioni analizzati per ogni comune della provincia di Alessandria
 
-Il tutto verrà ripetuto per diversi metodi di analisi e diversi target, in automatico.
+Il tutto verrà ripetuto automaticamente per diversi metodi di analisi e diversi target.
+
+Non cambieremo il documento a mano.  
+Cambieranno solo i dati.
+
 
 ## Cosa NON faremo
 
@@ -104,28 +116,38 @@ In questo corso:
 - non impariamo tutto R  
 - non costruiamo dashboard interattive  
 
-Tutto ciò che non serve alla consegna viene lasciato fuori.
+Useremo solo quello che serve per completare la consegna.
+
 
 ## Cosa imparerai davvero
 
 Alla fine del corso saprai:
 
 - leggere dati da Excel e CSV
-- guardarli in modo sensato
-- pulirli quel tanto che basta
+- esplorarli in modo sensato
+- pulirli quanto basta
 - aggregarli
 - visualizzarli
 - inserirli in un report automatico
-- rigenerare lo stesso report più volte senza rifare il lavoro
+- rigenerare lo stesso report tutte le volte che serve
 
-In altre parole: **passare dal foglio di calcolo al report automatico**.
+Avrai uno script che trasforma dati grezzi in un documento pronto da consegnare.
+
+Ripetibile.  
+Controllabile.  
+Meno fragile.
+
 
 ## In sintesi
 
-La consegna del corso è semplice:
+La consegna è questa:
 
 > Prendere dati ripetitivi  
 > smettere di copiarli a mano  
 > e produrre report automatici affidabili.
+
+Con meno errori.  
+Meno tempo perso.  
+Meno intervento manuale.
 
 Tutto il corso ruota attorno a questo.
