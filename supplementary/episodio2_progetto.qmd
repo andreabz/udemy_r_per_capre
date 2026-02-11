@@ -24,31 +24,39 @@ Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 
 ## Introduzione
 
-In questo episodio abbiamo creato un progetto in RStudio e scaricato i dataset dal repository GitHub del corso.
+In questo episodio abbiamo:
 
-Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
+- creato un progetto in RStudio
+- scaricato i dataset dal repository GitHub del corso
 
 Questo documento serve come riferimento pratico quando:
 
 - non ricordi dove trovare un file
 - non sai cosa contiene una cartella
-- ti senti "perso" nel repository
+- ti senti “perso” nel repository
 
-Se sai dove cliccare, sei a posto.
+Se sai dove si trovano le cose, lavorare diventa semplice.
+
 
 ## Il repository GitHub
 
-Per i nostri fini, il repository GitHub è solo una cartella online che contiene i file e il codice del corso.
+Per questo corso, il repository GitHub è semplicemente:
 
-Udemy ospita i video.
+- una cartella online
+- un posto dove sono conservati file e codice
+- un punto di riferimento stabile
+
+Udemy ospita i video.  
 GitHub ospita i file.
 
-Non serve sapere cos'è Git.
-Ci interessa solo sapere dove cliccare.
+Non serve sapere cos’è Git.  
+Non serve usare il terminale.  
+Serve solo sapere dove cliccare e cosa scaricare.
+
 
 ## La struttura delle cartelle
 
-Aprendo il repository vedrai questa struttura principale:
+Aprendo il repository vedrai qualcosa di simile:
 
 ```
 ├─ R/
@@ -58,80 +66,118 @@ Aprendo il repository vedrai questa struttura principale:
 └─ README.md
 ```
 
-Ecco cosa contiene ciascun elemento:
+Questa struttura non è casuale.  
+Separare dati, script e report è una buona abitudine fin dall’inizio.
 
-### La cartella `data/`
+### `data/`
 
-Contiene i dati di partenza del corso:
+Contiene i dati di partenza:
 
 - file CSV
 - file Excel
 
-Sono i dati “grezzi” che useremo come input per le analisi e i report automatici.
+Sono i dati “grezzi” che useremo come input.
 
-Non vanno mai modificati.
+Regola semplice:  
+i file in `data/` non si modificano.  
+Se devi trasformare qualcosa, lo fai negli script.
 
-### La cartella `R/`
+### `R/`
 
-Contiene gli script di R che useremo per creare i report in serie.
+Contiene gli script R.
 
-### La cartella `supplementary/`
+Qui scriveremo il codice che:
 
-Contiene i file di supporto al corso, come questo documento.
+- legge i dati
+- li trasforma
+- prepara i risultati per il report
 
-### Il file `report.qmd`
+### `supplementary/`
 
-`report.qmd` è il report principale che costruiremo insieme.
+Contiene materiale di supporto al corso, come questo documento.
 
-Non preoccuparti se ora sembra complicato: lo scriveremo passo passo.
+Non è necessario per far funzionare il report, ma serve per orientarti.
 
-### Il file `README.md`
+### `report.qmd`
 
-Il file `README.md` è il punto di partenza del repository.
-Contiene informazioni generali, riferimenti al corso e indicazioni di base.
+È il file principale del report.
 
-Parti sempre da qui.
+Qui uniremo:
+
+- testo
+- codice
+- grafici
+- tabelle
+
+Per ora è solo un file.  
+Diventerà il documento automatico del corso.
+
+### `README.md`
+
+È il punto di partenza del repository.
+
+Se non sai dove sei o cosa fare, riparti da qui.
+
 
 ## Come scaricare il materiale del corso
 
-Il modo più semplice è scaricare tutto il repository in una volta sola.
+Il modo più semplice è scaricare tutto il repository:
 
 1. Clicca sul pulsante verde **Code**
 2. Scegli **Download ZIP**
 3. Estrai la cartella sul tuo computer
-4. Aprila come progetto in RStudio
+4. Apri la cartella come progetto in RStudio
 
-In alternativa, puoi scaricare singoli file.
+In alternativa puoi scaricare singoli file, ma nella maggior parte dei casi conviene scaricare tutto.
 
-## Come aprire cartelle e file su GitHub
 
-- Cliccando su una cartella, la apri
-- Cliccando su un file, ne vedi il contenuto
+## Come navigare su GitHub
 
-Per scaricare un file:
+Su GitHub:
+
+- cliccando su una cartella la apri
+- cliccando su un file ne visualizzi il contenuto
+
+Per scaricare un file singolo:
 
 1. Apri il file
-2. Clicca sull'icona con la freccia verso il basso (in alto a destra)
-3. Scegli **Download raw file**.
+2. Clicca sull’icona con la freccia verso il basso
+3. Scegli **Download raw file**
 
-Dopo il download puoi:
+Poi puoi:
 
 - salvarlo sul computer
 - aprirlo in RStudio
-- copiarne il contenuto.
+- copiarne il contenuto
+
+
+## Perché lavoriamo con un progetto
+
+Creare un progetto significa:
+
+- avere una cartella principale
+- sapere dove stanno dati e script
+- evitare percorsi confusi sul computer
+
+Non è una formalità.
+
+È il primo passo per rendere il lavoro ordinato e ripetibile.
+
 
 ## In sintesi
 
-Per questo corso, GitHub è semplicemente:
+Per questo corso, GitHub è solo:
 
 - una cartella online
-- un posto da cui scaricare file
+- un archivio ordinato di file
 - un riferimento per il codice
 
 Se sai:
 
 - aprire una cartella
-- scaricare un file
-- copiarne il contenuto
+- scaricare un repository
+- aprire un progetto in RStudio
 
-allora GitHub **non è un ostacolo** per questo corso.
+hai tutto quello che serve per andare avanti.
+
+Il resto è solo pratica.
