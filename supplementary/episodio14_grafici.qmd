@@ -22,9 +22,9 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio trasformiamo i **riassunti numerici** in **grafici**.
+Trasformare i **riassunti numerici** in **grafici** con il pacchetto `ggplot2`.
 
 Non impariamo `ggplot2` in profondità.  
 Non esploriamo tutti i tipi di grafico.  
