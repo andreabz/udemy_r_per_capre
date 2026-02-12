@@ -136,7 +136,7 @@ I dati importati verranno utilizzati per:
 
 Se l'importazione è corretta, tutto il resto del flusso diventa più semplice.
 
-## Punto chiave degli episodi
+## Punto chiave
 
 Il report non contiene dati scritti a mano.
 
