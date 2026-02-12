@@ -22,20 +22,20 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio abbiamo imparato a creare **tabelle leggibili** nei report con la funzione `kable()` del pacchetto `knitr`.
+Creare **tabelle leggibili** nei report con la funzione `kable()` del pacchetto `knitr`.
 
-Non serve conoscere tutte le opzioni di `kable`.
+Non serve conoscere tutte le opzioni di `kable`.  
 Serve sapere **come trasformare una tabella grezza in qualcosa di chiaro e pronto per il report**.
 
 ## Perché `kable`
 
-Quando esportiamo tabelle nei report HTML (o PDF/Word):
+Quando esportiamo tabelle nei report HTML, PDF o Word:
 
-- le tabelle di default di R sono brutte e poco leggibili
-- `kable()` produce tabelle **pulite e professionali**
-- si integra perfettamente con Quarto
+- le tabelle di default di R sono poco leggibili  
+- `kable()` produce tabelle **pulite e coerenti**  
+- si integra perfettamente con Quarto e i report automatici
 
 ## Sintassi base
 
@@ -52,29 +52,28 @@ kable(riassunto_comune,
                       "Misure fallite"))
 ```
 
-- `riassunto_comune` è il dataset
-- `col.names` elenca come vogliamo rinominare le colonne solo per mostrarle nel report
-- `c()` crea un vettore, all'interno si mettono testi virgolettati o numeri separati da virgole.
+- `riassunto_comune` è il dataset da mostrare
+- `col.names` serve a rinominare le colonne solo nel report
+- `c()` crea un vettore di nomi da passare a `col.names`
 
-## Argomenti opzionali
+## Argomenti utili
 
-- `digits` regola il numero di cifre decimali da mostrare
-- `align` permette di specificare l'allineamento per le varie colonne
-- `booktabs = TRUE` permette una migliore resa delle tabelle in documenti PDF.
+- `digits`: numero di cifre decimali da mostrare
+- `align`: allineamento delle colonne (`l`, `c`, `r`)
+- `booktabs = TRUE`: migliora la resa delle tabelle in PDF
+
+Questi pochi parametri permettono di ottenere risultati **professionali e leggibili**.
 
 ## Per approfondire
 
-- `?kable` dopo aver installato e caricato il pacchetto `knitr`.
+- `?kable` dopo aver caricato `knitr`.
 
 ## In sintesi
 
 - `kable()` trasforma un data frame in una tabella leggibile
-- poche opzioni bastano per ottenere un risultato professionale
-- il report resta aggiornabile automaticamente con i nuovi dati
+- poche opzioni bastano per un risultato chiaroe
+- il report resta aggiornabile automaticamente con nuovi dati
 
-Con questo episodio abbiamo soddisfatto l'ultimo requisito del nostro report e abbiamo ottenuto
-
-> Una tabella con:
->
-> - numero di campioni, analisi e loro esito per ogni comune.
+Con questo episodio abbiamo completato il report automatico, 
+ottenendo una tabella con numero di campioni, analisi e loro esito per ogni comune.
 
