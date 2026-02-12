@@ -109,7 +109,7 @@ Questo tipo di output serve per:
 
 Nei prossimi episodi useremo **i riassunti**, non i dati grezzi.
 
-## Punto chiave dell'episodio
+## Punto chiave
 
 `by` permette di definire gruppi di dati su cui fare i calcoli con `j`.
 I dati riassunti sono salvati in una variabile per poter essere utilizzati.
