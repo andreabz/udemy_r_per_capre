@@ -22,58 +22,68 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio abbiamo introdotto Quarto, lo strumento che useremo per creare report.
+In questo episodio introduciamo **Quarto**, lo strumento che useremo per costruire i report.
 
-L'obiettivo non è imparare tutto Quarto.
-L'obiettivo è capire che tipo di oggetto stiamo costruendo.
+Non è un episodio su “tutto Quarto”.  
+L'obiettivo è capire **che tipo di oggetto stiamo creando** e come è strutturato un file `.qmd`.
 
-Questo documento serve come riferimento quando:
+Al termine dovresti sapere:
 
-- non ricordi cosa va nel “preambolo” del file
-- non è chiaro cosa sia codice e cosa sia testo
-- vuoi capire cosa puoi scrivere senza usare R
+- cos'è un file `.qmd`
+- cosa contiene
+- cosa viene eseguito e cosa no
+- cosa puoi scrivere senza usare R
 
+---
 
-## Cos’è Quarto
+## Cos'è Quarto
 
-Quarto serve a creare documenti che contengono:
+Quarto è uno strumento per creare documenti che contengono nello stesso file:
 
 - testo
 - codice
 - risultati del codice
 
-Tutto nello stesso file.
-
-Il file che useremo ha estensione `.qmd` e permette di creare:
+Il file ha estensione `.qmd` e può generare:
 
 - HTML
 - PDF
 - Word
 - slide (ad esempio PowerPoint)
 
-Nel corso useremo HTML perché è semplice da generare, leggibile e non richiede configurazioni aggiuntive.  
+Nel corso useremo principalmente **HTML**, perché:
+
+- è semplice da generare
+- non richiede configurazioni aggiuntive
+- è immediatamente leggibile
+
 Nell'episodio finale vedremo anche come produrre PDF e Word.
+
+---
 
 ## Il file `report.qmd`
 
-Nel repository del corso troverai un file chiamato `report.qmd`: è il cuore del corso.
+Nel repository del corso trovi il file `report.qmd`.  
+È il centro del progetto.
 
-Dentro `report.qmd` convivono tre elementi distinti:
+All'interno convivono tre elementi distinti:
 
-- informazioni sul documento
-- testo descrittivo
-- codice R
+1. informazioni sul documento  
+2. testo descrittivo  
+3. codice R  
 
-In questo episodio ci concentriamo solo sulle informazioni statiche ma alla fine del corso questo file produrrà un report completo e leggibile senza dover copiare nulla a mano.
-Diventerà anche uno stampo riutilizzabile per report simili.
+In questo episodio ci concentriamo solo sulle **informazioni statiche**.
+
+Alla fine del corso questo stesso file genererà un report completo, senza copia-incolla manuale.  
+Diventerà una struttura riutilizzabile per report simili.
+
+---
 
 ## Il preambolo (YAML)
 
-All’inizio del file `report.qmd` trovi una sezione delimitata da `---`.
-
-Ad esempio:
+All'inizio del file trovi una sezione delimitata da tre trattini:
 
 ```
 ---
@@ -83,55 +93,63 @@ lang: it
 ---
 ```
 
-Questa parte si chiama preambolo (o YAML).
+Questa sezione si chiama **preambolo** (o YAML).
 
-Serve a dire a Quarto:
+Serve a configurare il documento:
 
-- che titolo deve avere il report
-- in che formato deve essere generato
-- che lingua usare
+- titolo
+- formato di output
+- lingua
 
-Non è codice R e non viene "eseguita". È solo configurazione.
+Non è codice R.  
+Non viene eseguito.  
+È solo configurazione.
+
+---
 
 ## Informazioni statiche e dinamiche
 
-In questo corso distinguiamo sempre tra:
+Nel corso distinguiamo sempre tra due tipi di contenuto.
 
 ### Informazioni statiche
 
-Sono informazioni che:
+Sono parti che:
 
-- non cambiano quando cambiano i dati
+- non dipendono dai dati
 - non richiedono codice R
 
 Esempi:
 
-- titolo del report
-- introduzione testuale
+- titolo
+- introduzione
 - spiegazioni
 - commenti
 
 Si scrivono come testo normale.
 
-### Informazioni dinamiche (più avanti)
+### Informazioni dinamiche (verranno dopo)
 
-Sono informazioni che:
+Sono parti che:
 
 - dipendono dai dati
-- cambiano da report a report
+- cambiano quando cambiano i dati
 
 Esempi:
 
 - numeri calcolati
-- risultati di analisi
-- grafici
 - tabelle
+- grafici
+- risultati di analisi
 
-Queste arriveranno più avanti e per il momento non ci servono ancora.
+In questo episodio non le utilizziamo ancora.
 
-## Testo Markdown
+---
 
-Il testo nel file `report.qmd` si scrive in Markdown.
+## Il testo in Markdown
+
+Il contenuto testuale del file `.qmd` è scritto in **Markdown**.
+
+Esempio:
 
 ```
 # Titolo
@@ -144,15 +162,33 @@ Questo è un paragrafo.
 
 ```
 
-Non serve imparare tutto Markdown, basta riconoscere che:
+Non è necessario conoscere tutto Markdown.  
+Per questo corso è sufficiente sapere che:
 
 - `#` indica un titolo
-- il resto è testo normale
+- il testo normale è semplicemente testo
 - gli elenchi si scrivono con `-`
+
+---
+
+## Punto chiave dell'episodio
+
+Un file `.qmd` è un contenitore strutturato che unisce:
+
+- configurazione (YAML)
+- testo
+- codice
+
+In questo episodio abbiamo lavorato solo su configurazione e testo.
+
+Il codice e le parti dinamiche verranno introdotti nei prossimi passaggi.
+
+---
 
 ## Per approfondire
 
-Quarto offre una documentazione molto ben scritta e corposa, la trovi a questo indirizzo <https://quarto.org/docs/guide/>.
+Documentazione ufficiale di Quarto:  
+<https://quarto.org/docs/guide/>
 
 Non è pensata per essere letta dall'inizio alla fine.
 
@@ -160,11 +196,7 @@ Usala come riferimento quando:
 
 - sai cosa stai cercando
 - vuoi approfondire un dettaglio
-- ti serve capire cosa è possibile fare oltre questo corso.
-
-Se aprendola ti sembra troppo ampia, è normale.
-Qui ci concentriamo solo su ciò che serve per costruire il nostro report.
-
+- ti serve verificare una sintassi
 
 
 
