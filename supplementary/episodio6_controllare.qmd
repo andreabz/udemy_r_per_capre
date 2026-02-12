@@ -38,7 +38,6 @@ Le domande a cui rispondere sono semplici:
 
 Questo passaggio è preliminare a qualsiasi trasformazione o analisi.
 
----
 
 ## Controllare la struttura: `str()`
 
@@ -108,7 +107,7 @@ Questi comandi permettono di osservare esempi concreti dei dati:
 
 Non servono per analizzare, ma per orientarsi.
 
-## Punto chiave dell'episodio
+## Punto chiave
 
 Prima di trasformare o analizzare un dataset:
 
