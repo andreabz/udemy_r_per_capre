@@ -127,7 +127,7 @@ Spesso problemi nei report nascono proprio da unioni sbagliate.
 L'unione di dati può comportare la perdita o la duplicazione non voluta di informazioni:
 è sempre meglio verificare che il risultato ottenuto sia quello desiderato.
 
-In sintesi
+## In sintesi
 
 - i dati arrivano spesso da file diversi
 - serve una colonna in comune per unirli
