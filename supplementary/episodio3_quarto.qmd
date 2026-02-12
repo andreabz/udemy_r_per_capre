@@ -36,7 +36,6 @@ Al termine dovresti sapere:
 - cosa viene eseguito e cosa no
 - cosa puoi scrivere senza usare R
 
----
 
 ## Cos'è Quarto
 
@@ -61,7 +60,6 @@ Nel corso useremo principalmente **HTML**, perché:
 
 Nell'episodio finale vedremo anche come produrre PDF e Word.
 
----
 
 ## Il file `report.qmd`
 
@@ -79,7 +77,6 @@ In questo episodio ci concentriamo solo sulle **informazioni statiche**.
 Alla fine del corso questo stesso file genererà un report completo, senza copia-incolla manuale.  
 Diventerà una struttura riutilizzabile per report simili.
 
----
 
 ## Il preambolo (YAML)
 
@@ -105,7 +102,6 @@ Non è codice R.
 Non viene eseguito.  
 È solo configurazione.
 
----
 
 ## Informazioni statiche e dinamiche
 
@@ -143,7 +139,6 @@ Esempi:
 
 In questo episodio non le utilizziamo ancora.
 
----
 
 ## Il testo in Markdown
 
@@ -169,9 +164,8 @@ Per questo corso è sufficiente sapere che:
 - il testo normale è semplicemente testo
 - gli elenchi si scrivono con `-`
 
----
 
-## Punto chiave dell'episodio
+## Punto chiave
 
 Un file `.qmd` è un contenitore strutturato che unisce:
 
@@ -183,7 +177,6 @@ In questo episodio abbiamo lavorato solo su configurazione e testo.
 
 Il codice e le parti dinamiche verranno introdotti nei prossimi passaggi.
 
----
 
 ## Per approfondire
 
