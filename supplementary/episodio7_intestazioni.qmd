@@ -131,7 +131,7 @@ colnames(misure) <- colnames(misure) |>
 L'operatore `|>` passa il risultato della funzione a sinistra come primo argomento della funzione a destra.
 Se la funzione non utilizza il primo argomento, si può indicare esplicitamente il punto di inserimento con il segnaposto `_`.
 
-## Punto chiave dell'episodio
+## Punto chiave
 
 Pulire le intestazioni significa:
 
