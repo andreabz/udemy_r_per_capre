@@ -22,26 +22,27 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio impariamo a **modificare i dati**.
+Imparare a **modificare i dati** usando `data.table`.
 
-Nel senso di:
+Gli obiettivi principali:
 
-- renderli utilizzabili
-- esplicitare trasformazioni
-- preparare il terreno per analisi e report
+- rendere i dati coerenti e leggibili
+- esplicitare le trasformazioni
+- preparare il dataset per report automatici e analisi future
 
+---
 
 ## L’operatore `:=`
 
-In `data.table`, per creare o modificare colonne si usa `:=` nell'argomento `j` di `data.table`:
+In `data.table`, `:=` serve a creare o modificare colonne, sempre nell’argomento `j`:
 
 ```
 DT[i, j, by]
 ```
 
-Per esempio, volendo convertire a data il contenuto della colonna `data_campionamento` del dataset `misure`:
+Esempio: convertire in data la colonna `data_campionamento` del dataset `misure`:
 
 ```{r}
 #| eval: false
@@ -50,12 +51,12 @@ misure[, data_campionamento := as.IDate(data_campionamento,
                                         format = "%d/%m/%Y")]
 ```
 
-- salto l'argomento `i`
-- uso la funzione `as.IDate()` per convertire il testo in data, specificando dove dovrà agire e il formato che troverà.
+- l’argomento `i` viene saltato perché vogliamo modificare tutte le righe
+- `as.IDate()` converte testo in data, specificando il formato atteso
 
-Posso usare lo stesso meccanismo per aggiungere o eliminare colonne.
+## Modifiche multiple
 
-Nel caso abbia più modifiche da fare contemporaneamente, posso scrivere
+Si possono modificare più colonne contemporaneamente:
 
 ```{r}
 #| eval: false
@@ -69,13 +70,13 @@ misure[, `:=` (
   )]
 ```
 
-- creo le nuove colonne `inizio_analisi` e `fine_analisi` a partire da `data_inizio_analisi` e `data_fine_analisi`
-- converto a date `data_campionamento`, `inizio_analisi` e `fine_analisi`
-- cancello le colonne `data_inizio_analisi` e `data_fine_analisi`
+- creiamo nuove colonne a partire da colonne esistenti
+- convertiamo i valori in date
+- cancelliamo colonne originali non più necessarie
 
-## Usare più colonne insieme
+## Colonne derivate
 
-Le nuove colonne possono dipendere da più colonne:
+Le nuove colonne possono derivare da più colonne:
 
 ```{r}
 #| eval: false
@@ -83,9 +84,11 @@ Le nuove colonne possono dipendere da più colonne:
 misure[, tempo_analisi := fine_analisi - inizio_analisi]
 ```
 
+Questo calcola il tempo di analisi come differenza tra due date.
+
 ## Modificare solo alcuni valori
 
-Posso combinare `i` e `j` per modificare solo alcuni valori:
+Combinando `i` e `j` è possibile modificare solo i valori che soddisfano una condizione:
 
 ```{r}
 #| eval: false
@@ -93,22 +96,27 @@ Posso combinare `i` e `j` per modificare solo alcuni valori:
 misure[valore == "valore mancante", valore := NA]
 ```
 
-I valori senza "valore mancante", non saranno modificati.
+I valori che non soddisfano la condizione rimangono invariati.
 
 ## Errori comuni
 
-È normale:
+Durante la modifica dei dati è normale:
 
 - sbagliare il nome di una colonna
-- dimenticare una parentesi
+- dimenticare parentesi o virgolette
 - sovrascrivere qualcosa per errore
 
-Se hai cancellato qualche informazione da una tabella, riesegui lo script che hai salvato nell'editor saltando il comando incriminato: ti accorgerai che non hai perso nulla.
+Se succede, rieseguire lo script completo senza il comando errato: non si perde nulla.
+
+## Punto chiave
+
+`:=` permette di modificare, creare o cancellare colonne in modo chiaro e ripetibile.
+Tutte le trasformazioni rimangono nel codice: i dati originali restano tracciabili e leggibili.
 
 ## In sintesi
 
-- `:=` serve per creare o modificare colonne
-- le trasformazioni sono tutte contenute nel codice nell'editor
-- i dati diventano più leggibili e utilizzabili
+- `:=` è lo strumento principale per modificare colonne
+- le trasformazioni sono sempre contenute nello script
+- i dati diventano leggibili e coerenti
 - stiamo preparando il dataset per i report automatici
 
