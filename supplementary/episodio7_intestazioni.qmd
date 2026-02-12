@@ -52,7 +52,7 @@ Possono contenere:
 
 In R questi nomi funzionano, ma rendono il codice meno chiaro e più soggetto a errori.
 
-Stabilire una convenzione fin dall’inizio semplifica tutto il lavoro successivo.
+Stabilire una convenzione fin dall'inizio semplifica tutto il lavoro successivo.
 
 
 ## I nomi delle colonne sono un vettore
@@ -83,13 +83,13 @@ Un primo intervento tipico:
 colnames(misure) <- gsub(" ", "_", colnames(misure))
 ```
 
-L’operazione è composta da tre passaggi:
+L'operazione è composta da tre passaggi:
 
 - leggiamo i nomi con `colnames(misure)`
 - sostituiamo gli spazi con _ tramite `gsub()`
 - riassegniamo il risultato ai nomi delle colonne
 
-L’operatore `<-` assegna alla variabile a sinistra il risultato dell’espressione a destra.
+L'operatore `<-` assegna alla variabile a sinistra il risultato dell'espressione a destra.
 
 ## Rimuovere spazi iniziali o finali
 
@@ -101,7 +101,7 @@ Per eliminare eventuali spazi residui:
 colnames(misure) <- trimws(colnames(misure))
 ```
 
-`trimws()` rimuove spazi all’inizio o alla fine delle stringhe.
+`trimws()` rimuove spazi all'inizio o alla fine delle stringhe.
 
 ## Uniformare le maiuscole
 
@@ -128,7 +128,7 @@ colnames(misure) <- colnames(misure) |>
   tolower()
 ```
 
-L’operatore `|>` passa il risultato della funzione a sinistra come primo argomento della funzione a destra.
+L'operatore `|>` passa il risultato della funzione a sinistra come primo argomento della funzione a destra.
 Se la funzione non utilizza il primo argomento, si può indicare esplicitamente il punto di inserimento con il segnaposto `_`.
 
 ## Punto chiave dell'episodio
