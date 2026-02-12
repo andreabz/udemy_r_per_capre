@@ -32,7 +32,6 @@ Gli obiettivi principali:
 - esplicitare le trasformazioni
 - preparare il dataset per report automatici e analisi future
 
----
 
 ## L’operatore `:=`
 

@@ -32,7 +32,6 @@ Non cerchiamo l'estetica perfetta.
 
 L'obiettivo è costruire **grafici utili al report**.
 
----
 
 ## Da tabella a grafico
 
@@ -41,7 +40,6 @@ I grafici partono da tabelle già riassunte, come quelle create nell'episodio pr
 - il grafico **non calcola nulla**  
 - il grafico **mostra risultati già calcolati**
 
----
 
 ## Grafico del numero di campioni
 

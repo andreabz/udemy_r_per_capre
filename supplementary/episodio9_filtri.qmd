@@ -34,7 +34,6 @@ In questo episodio:
 
 Impariamo a selezionare correttamente i dati su cui lavoreremo dopo.
 
----
 
 ## Cos'è `data.table`
 
@@ -48,7 +47,6 @@ Nel corso la usiamo perché:
 
 La sintassi può sembrare densa, ma è coerente.
 
----
 
 ## La struttura fondamentale: `DT[i, j, by]`
 
