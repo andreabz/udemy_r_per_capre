@@ -22,30 +22,30 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio impariamo a generare il nostro report in **diversi formati** (HTML, PDF, Word) e a usare alcune opzioni pratiche dei chunk R per migliorare leggibilità e pulizia.
+Generare report in **diversi formati** (HTML, PDF, Word) e usare alcune opzioni dei chunk R per rendere i report più leggibili e puliti.
 
 
 ## Output di Quarto
 
-Specifichiamo l'output nel preambolo del report
+Il formato del report si specifica nel YAML:
 
 ```yaml
 format: html
 ```
 
-Al posto di `html` possiamo metterne altri:
+Possibili alternative:
 
-- HTML: leggibile su browser, condivisibile, interattivo
-- PDF: ottimo per stampa o archiviazione
-- Word (docx): facile da inviare a colleghi ma è modificabile, quindi è meglio usarlo solo per bozze, altrimenti si perde la riproducibilità.
+- HTML: leggibile in browser, condivisibile, interattivo
+- PDF: adatto per stampa o archiviazione
+- Word (docx): modificabile, utile per bozze, ma meno riproducibile
 
-**Nota:** puoi generare uno o tutti i formati con lo stesso file `.qmd`.
+È possibile generare più formati dallo stesso file `.qmd`.
 
-### File PDF
+### PDF
 
-Per ottenere file PDF è necessario avere una distribuzione LaTeX installata sul sistema. Io consiglio `TinyTeX`, installabile direttamente da R:
+Serve una distribuzione LaTeX, come `TinyTeX`, installabile da R:
 
 ```{r}
 #| eval: false
@@ -55,30 +55,31 @@ library(tinytex)
 install_tinytex()
 ```
 
-### File Word
+### Word
 
-Per poter ottenere e visualizzare file `docx` è necessario avere Office, LibreOffice o OpenOffice installato.
+Serve Office, LibreOffice o OpenOffice per aprire i file `docx`.
 
 ### Altri formati
 
-Con Quarto si possono ottenere anche altri formati con presentazioni in HTML o PowerPoint oppure poster. Qui <https://quarto.org/docs/output-formats/all-formats.html> trovate l'elenco completo.
+Quarto permette anche presentazioni HTML/PowerPoint, poster, ecc.
+Elenco completo: <https://quarto.org/docs/output-formats/all-formats.html>
 
-**Attenzione:** talvolta passando da un formato all'altro è necessario qualche aggiustamento per garantire una buona leggibilità. Capita frequentemente con tabelle e grafici complessi.
+Passando da un formato all'altro può essere necessario qualche aggiustamento, soprattutto per tabelle e grafici complessi.
 
 ## Chunk di R: opzioni principali
 
 | Opzione | Significato |
 |---------|-------------|
-| `echo: true/false` | Mostra o nasconde il codice R |
+| `echo: true/false` | Mostra o nasconde il codice |
 | `error: false` | Nasconde errori |
 | `warning: false` | Nasconde avvisi |
 | `message: false` | Nasconde messaggi (es. caricamento pacchetti) |
-| `results: 'asis'` | Permette output “puro”, utile per tabelle HTML/Markdown |
-| `label: nome`    | Permette di dare un nome a un chunk |
-| `fig-width` e `fig-height` | Dimensione delle figure |
+| `results: 'asis'` | Output "puro", utile per tabelle HTML/Markdown |
+| `label: nome`    | Nome del chunk per debug e riferimenti |
+| `fig-width` e `fig-height` | Dimensione figure |
 | `fig-cap` | Didascalia delle figure |
 
-`echo`, `warning` e `message` si possono specificare anche nel preambolo:
+È possibile specificare alcune opzioni globalmente nel YAML:
 
 ```yaml
 execute: 
@@ -89,19 +90,23 @@ execute:
 
 ## Suggerimenti pratici
 
-1. Usa `echo: false` per pulire i report destinati ai colleghi/clienti  
-2. Evita chunk troppo lunghi: se necessario, dividili  
+1. Usa `echo: false` per report puliti destinati a colleghi/clienti
+2. Evita chunk troppo lunghi; dividili se necessario  
 3. Dai nomi chiari ai chunk con `label:` per facilitare debug e revisione  
-4. Controlla output multipli per assicurarti che grafici e tabelle siano coerenti in tutti i formati
+4. Controlla sempre grafici e tabelle in tutti i formati generati
 
 
 ## Per approfondire
 
 - Documentazione opzioni chunk: <https://quarto.org/docs/computations/execution-options.html>
 
+## Punto chiave
+
+Modificando l'intestazione e le opzioni dei chunk è possibile personalizzare il formato e l'aspetto del report.
+
 ## In sintesi
 
-- YAML + `format` = definisci HTML, PDF, Word dallo stesso file  
-- Chunk R con opzioni = report pulito, leggibile e flessibile  
-- Controlla sempre il risultato in tutti i formati
+- YAML + `format` definiscono HTML, PDF e Word dallo stesso file
+- Opzioni dei chunk = report leggibile, pulito e flessibile
+- Controllare sempre output multipli per garantire coerenza
 
