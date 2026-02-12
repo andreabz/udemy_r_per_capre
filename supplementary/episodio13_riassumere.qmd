@@ -22,7 +22,9 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
+
+Imparare a **riassumere i dati** usando `data.table`.
 
 Finora abbiamo lavorato su:
 
@@ -30,7 +32,8 @@ Finora abbiamo lavorato su:
 - singoli campioni
 - singole misure
 
-Ma in un report non riporto tutti i dati, ne riporto un riassunto utile per capire cosa ci dice un dataset.
+In un report, però, non riportiamo tutti i dati: servono **riassunti utili** per capire il dataset.
+
 
 ## Perché riassumere i dati
 
@@ -46,23 +49,18 @@ Un report serve a:
 - confrontare
 - decidere
 
-Per questo **riduciamo i dati**, in modo controllato e intenzionale.
+Ridurre i dati in modo **controllato e intenzionale** è fondamentale.
 
-## L'idea chiave: gruppi + sintesi
+## Gruppi e sintesi: l'idea chiave
 
-Ogni riassunto ha due componenti:
+Ogni riassunto combina:
 
-1. **un criterio di raggruppamento**
-2. **una o più statistiche di sintesi**
+1. **criterio di raggruppamento** (`by`)
+2. **statistiche di sintesi** (`j`)
 
-In `data.table` questo si scrive inserendo
+Sintassi `data.table`: `DT[i, j, by]`
 
-- il criterio di raggruppamento in `by`
-- le statistiche di sintesi in `j`
-
-con l'ormai consueta sintassi `DT[i, j, by]`
-
-Facciamo un esempio:
+Esempio:
 
 ```{r}
 #| eval: false
@@ -73,11 +71,10 @@ misure[, .(
 ), by = .(mese_inizio_analisi)]
 ```
 
-- il gruppo è definito da `by = .(mese_inizio_analisi)`
-- come riassunto calcolo il numero di campioni univoci con `uniqueN(id_campione)` e il tempo di analisi mediano con `median(tempo_analisi)`
-- raggruppo le varie sintesi in `j` con `.()`
+- `by` definisce il gruppo
+- `.()` in `j` calcola le sintesi
+- il risultato non è salvato finché non lo assegni a una variabile, ad esempio:
 
-Il risultato di questa sintesi non è salvato da nessuna parte finché non lo assegno a una variabile, ad esempio:
 
 ```{r}
 #| eval: false
@@ -92,34 +89,37 @@ riassunto <- misure[,
               by = .(mese_inizio_analisi, id_metodo)]
 ```
 
-In questo caso, raggruppo per mese di inizio analisi e metodo, calcolo diversi valori che riassumano l'informazione utile del dataset e poi salvo tutto in `riassunto`, così da poterlo utilizzare in seguito.
-
 ## Riassunti e leggibilità
 
 Un buon riassunto:
 
-- ha poche colonne
-- ha nomi chiari
-- è leggibile anche senza contesto
+- poche colonne
+- nomi chiari
+- leggibile anche senza contesto
 
-Se una tabella ha bisogno di essere spiegata riga per riga,
-probabilmente è troppo complicata.
+Se serve spiegare riga per riga, probabilmente la tabella è troppo complessa.
 
 ## Dal riassunto al grafico
 
-Questo tipo di output è pensato per:
+Questo tipo di output serve per:
 
 - grafici
 - tabelle finali
 - confronti temporali
 
-Nei prossimi episodi useremo questi riassunti, non i dati grezzi.
+Nei prossimi episodi useremo **i riassunti**, non i dati grezzi.
+
+## Punto chiave dell'episodio
+
+`by` permette di definire gruppi di dati su cui fare i calcoli con `j`.
+I dati riassunti sono salvati in una variabile per poter essere utilizzati.
+
 
 ## In sintesi
 
-- un report nasce dai riassunti, non dai dati grezzi
+- i report nascono dai riassunti, non dai dati grezzi
 - `by =` definisce i gruppi
-- decido come riassumere i dati specificando `.()` in `j`
+- `.()` in `j` specifica come sintetizzare i dati
 - poche informazioni chiare valgono più di molte confuse
 
-Cominciamo ad avere buona parte degli ingredienti necessari a un vero report.
+Con questo episodio abbiamo quasi tutti gli ingredienti per costruire un report completo.
