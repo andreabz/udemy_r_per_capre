@@ -1,62 +1,42 @@
----
-title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 2 - la creazione di un progetto"
-lang: it
-format:
-  pdf:
-    documentclass: article
-    papersize: a4
-    margin-left: 2.5cm
-    margin-right: 2.5cm
-    margin-top: 3cm
-    margin-bottom: 3cm
-    fontsize: 11pt
-    mainfont: Inter
-    monofont: JetBrains Mono
-    linkcolor: teal
-    urlcolor: teal
-    toc: false
----
-
 ::: {.small}
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
+
 
 ## Introduzione
 
 In questo episodio abbiamo:
 
-- creato un progetto in RStudio
-- scaricato i dataset dal repository GitHub del corso
+- creato un progetto in RStudio  
+- scaricato i dataset dal repository GitHub del corso  
 
 Questo documento serve come riferimento pratico quando:
 
-- non ricordi dove trovare un file
-- non sai cosa contiene una cartella
-- ti senti “perso” nel repository
+- non ricordi dove si trova un file  
+- non sai cosa contiene una cartella  
+- vuoi capire come è organizzato il materiale del corso  
 
-Se sai dove si trovano le cose, lavorare diventa semplice.
+Sapere dove si trovano i file è il primo passo per lavorare in modo ordinato.
 
 
 ## Il repository GitHub
 
-Per questo corso, il repository GitHub è semplicemente:
+Nel contesto del corso, il repository GitHub è semplicemente:
 
-- una cartella online
-- un posto dove sono conservati file e codice
-- un punto di riferimento stabile
+- una cartella online  
+- un archivio che contiene file e codice  
+- un punto di riferimento stabile  
 
 Udemy ospita i video.  
 GitHub ospita i file.
 
-Non serve sapere cos’è Git.  
-Non serve usare il terminale.  
-Serve solo sapere dove cliccare e cosa scaricare.
+Non è necessario conoscere Git o usare il terminale.  
+È sufficiente sapere dove cliccare e cosa scaricare.
 
 
-## La struttura delle cartelle
+## Struttura delle cartelle
 
-Aprendo il repository vedrai qualcosa di simile:
+Aprendo il repository troverai una struttura simile:
 
 ```
 ├─ R/
@@ -66,21 +46,21 @@ Aprendo il repository vedrai qualcosa di simile:
 └─ README.md
 ```
 
-Questa struttura non è casuale.  
-Separare dati, script e report è una buona abitudine fin dall’inizio.
+La separazione tra dati, script e report è intenzionale.  
+Mantenere questi elementi distinti è una buona pratica fin dall'inizio.
 
 ### `data/`
 
 Contiene i dati di partenza:
 
-- file CSV
-- file Excel
+- file CSV  
+- file Excel  
 
-Sono i dati “grezzi” che useremo come input.
+Sono i dati grezzi che useremo come input.
 
-Regola semplice:  
-i file in `data/` non si modificano.  
-Se devi trasformare qualcosa, lo fai negli script.
+Regola operativa:  
+i file in `data/` non si modificano direttamente.  
+Le trasformazioni si fanno negli script.
 
 ### `R/`
 
@@ -88,96 +68,86 @@ Contiene gli script R.
 
 Qui scriveremo il codice che:
 
-- legge i dati
-- li trasforma
-- prepara i risultati per il report
+- legge i dati  
+- li trasforma  
+- prepara i risultati per il report  
 
 ### `supplementary/`
 
-Contiene materiale di supporto al corso, come questo documento.
+Contiene il materiale di supporto al corso, come questo documento.
 
-Non è necessario per far funzionare il report, ma serve per orientarti.
+Non è necessario per eseguire il report, ma serve come riferimento.
 
 ### `report.qmd`
 
 È il file principale del report.
 
-Qui uniremo:
+Qui verranno integrati:
 
-- testo
-- codice
-- grafici
-- tabelle
+- testo  
+- codice  
+- grafici  
+- tabelle  
 
-Per ora è solo un file.  
-Diventerà il documento automatico del corso.
+Diventerà il documento automatico che genera l'output finale.
 
 ### `README.md`
 
 È il punto di partenza del repository.
 
-Se non sai dove sei o cosa fare, riparti da qui.
+Se non sai dove ti trovi o cosa fare, riparti da qui.
 
 
 ## Come scaricare il materiale del corso
 
-Il modo più semplice è scaricare tutto il repository:
+Il metodo più semplice è scaricare l'intero repository:
 
-1. Clicca sul pulsante verde **Code**
-2. Scegli **Download ZIP**
-3. Estrai la cartella sul tuo computer
-4. Apri la cartella come progetto in RStudio
+1. Clicca sul pulsante verde **Code**  
+2. Seleziona **Download ZIP**  
+3. Estrai la cartella sul tuo computer  
+4. Apri la cartella come progetto in RStudio  
 
-In alternativa puoi scaricare singoli file, ma nella maggior parte dei casi conviene scaricare tutto.
+È possibile scaricare anche singoli file, ma nella maggior parte dei casi conviene scaricare tutto.
 
 
-## Come navigare su GitHub
+## Navigare su GitHub
 
 Su GitHub:
 
-- cliccando su una cartella la apri
-- cliccando su un file ne visualizzi il contenuto
+- cliccando su una cartella la apri  
+- cliccando su un file ne visualizzi il contenuto  
 
 Per scaricare un file singolo:
 
-1. Apri il file
-2. Clicca sull’icona con la freccia verso il basso
-3. Scegli **Download raw file**
+1. Apri il file  
+2. Clicca sull'icona con la freccia verso il basso  
+3. Seleziona **Download raw file**
 
-Poi puoi:
-
-- salvarlo sul computer
-- aprirlo in RStudio
-- copiarne il contenuto
+Poi puoi salvarlo sul computer o aprirlo in RStudio.
 
 
 ## Perché lavoriamo con un progetto
 
 Creare un progetto significa:
 
-- avere una cartella principale
-- sapere dove stanno dati e script
-- evitare percorsi confusi sul computer
+- avere una cartella principale dedicata  
+- sapere dove si trovano dati e script  
+- evitare percorsi assoluti confusi sul computer  
 
-Non è una formalità.
-
-È il primo passo per rendere il lavoro ordinato e ripetibile.
+Non è una formalità.  
+È una condizione necessaria per lavorare in modo ordinato e riproducibile.
 
 
 ## In sintesi
 
-Per questo corso, GitHub è solo:
+Nel contesto del corso, GitHub è:
 
-- una cartella online
-- un archivio ordinato di file
-- un riferimento per il codice
+- un archivio online ordinato  
+- un riferimento stabile per dati e codice  
 
 Se sai:
 
-- aprire una cartella
-- scaricare un repository
-- aprire un progetto in RStudio
+- scaricare un repository  
+- aprire una cartella come progetto in RStudio  
 
-hai tutto quello che serve per andare avanti.
-
-Il resto è solo pratica.
+hai tutto ciò che serve per proseguire.
