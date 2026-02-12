@@ -6,7 +6,7 @@ Questo repository contiene il materiale tecnico del corso Udemy:
 
 Il corso insegna come creare un report **automatico e riproducibile**, partendo da dati grezzi in Excel e CSV, fino al documento finale in Quarto.
 
-👉 Il report è pubblicato all'indirizzo https://andreabz.github.io/udemy_r_per_capre/
+👉 Il report è pubblicato all'indirizzo https://andreabz.github.io/udemy_r_per_capre/report.html
 
 ---
 
