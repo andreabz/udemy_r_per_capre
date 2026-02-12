@@ -22,16 +22,20 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo degli episodi
 
-In questi episodi abbiamo imparato a rendere il nostro report **parametrico** e a generarlo in serie per diversi dataset usando `quarto_render()` in un ciclo `for`.
+Generare report **parametrici e automatici**.
+
+Utilizzeremo:
 
 - **Parametri**: valori che cambiano da report a report senza modificare il codice interno  
-- **Ciclo `for` + `quarto_render()`**: metodo per generare **più report automaticamente**
+- **Ciclo `for` + `quarto_render()`**: metodo per creare **più report in serie**
+
 
 ## Parametri in Quarto
 
-Nei report Quarto possiamo definire **parametri** nel YAML:
+Nei report Quarto possiamo definire parametri nel YAML:
+
 
 ```yaml
 ---
@@ -44,7 +48,7 @@ params:
 ---
 ```
 
-All'interno del report userò
+All'interno del report possiamo usarli così:
 
 ```{r}
 #| eval: false
@@ -61,12 +65,12 @@ misure[id_metodo == params$method,
 
 per accedere ai soli dati del metodo specificato con `params$method`.
 
-- Cambiando `params$method` o `params$target`, il report si aggiorna senza toccare il codice R.
-- Utile per avere una fabbrica di report con una struttura simile ma per metodi e target differenti.
+- Cambiando `params$method` o `params$target`, il report si aggiorna senza modificare il codice R.
+- Utile per avere una fabbrica di report per diversi metodi e target.
 
 ## Ciclo `for` e `quarto_render()`
 
-Supponiamo di voler generare i report per tutti i metodi e i relativi tempi target:
+Per generare report per più metodi e target:
 
 ```{r}
 #| eval: false
@@ -104,32 +108,35 @@ for (riga in 1:nrow(combinazioni)) {
 }
 ```
 
-- `combinazioni` contiene i nomi dei diversi metodo i rispettivi tempi target
-- `output_file` è il nome del file in cui verrà salvato il report
-- `quarto_render()` prende il report e passa i metodi e i target da applicare
-- `for` ripete le operazioni tra le `{}` per ogni riga di `combinazioni`
+- `combinazioni` contiene i metodi e i target
+- `output_file` è il nome del report generato
+- `quarto_render()` esegue il report con i parametri specificati
+- il ciclo `for` ripete l'operazione per tutte le combinazioni
 
 ## Vantaggi
 
-- Zero copia/incolla: non serve aprire Excel e Word manualmente
-- Scalabilità: basta aggiungere nuovi mesi o dataset
-- Riproducibilità: ogni report è generato in modo coerente e automatico
-- Aggiornamento semplice: cambia i dati o i parametri, rigenera i report
+- Zero copia/incolla: niente Excel/Word manuali
+- Scalabilità: basta aggiungere nuovi metodi o dataset
+- Riproducibilità: report coerenti e automatici
+- Aggiornamento semplice: cambiando dati o parametri, si rigenerano i report
 
 ## Controlli
 
-- Verifica che i nomi dei parametri nel `YAML` coincidano con quelli passati in `execute_params`
-- Evita spazi o caratteri speciali nei nomi dei report generati
-- Mantieni lo stesso formato di dataset per tutti i report
+- I nomi dei parametri nel YAML devono coincidere con quelli passati in `execute_params`
+- Evitare spazi o caratteri speciali nei nomi dei report
+- Mantenere lo stesso formato dei dataset per tutti i report
+
+## Punto chiave
+
+Combinando un report parametrizzato e un ciclo,
+è possibile creare una fabbrica di report che condividono la stessa struttura ma utilizzano dati diversi.
 
 ## In sintesi
 
 - Parametri = valori dinamici che cambiano il report senza toccare il codice
-- `quarto_render()` + `for` = fabbrica di report
+- `quarto_render()` + `for` = fabbrica di report automatica
 
-Questo approccio è la chiave per risparmiare tempo e ridurre errori
+Con questo approccio:
 
-Con questi episodi è stata mantenuta la promessa fatta all'inizio del corso:
-
-> basta fare copia-incolla da fogli Excel a Word
-> basta fare report sempre uguali
+- Basta copia-incolla da Excel a Word
+- I report sono sempre aggiornati, coerenti e riproducibili
