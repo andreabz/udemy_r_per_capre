@@ -22,82 +22,115 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio abbiamo visto come chiedere aiuto quando ci blocchiamo.
+Imparare **a scegliere il tipo di aiuto giusto** in base al problema che stiamo affrontando.
 
-Durante la scrittura del codice possono esserci problemi di diversa natura, per ogni diversa tipologia ci sono strumenti diversi.
+Non tutti i blocchi sono uguali.  
+Capire *che tipo di problema abbiamo* è il primo passo per risolverlo in modo efficiente.
 
+---
 
 ## Caso 1: Non mi ricordo la sintassi
 
-So cosa voglio fare, ma non mi ricordo come si chiama l'argomento o come si scrive
+Sai cosa vuoi fare, ma non ricordi il nome di un argomento o la forma corretta della funzione.
 
 Esempio:
 
-> `mean()`… ma come si esclude `NA`?
+> `mean()`... come si escludono gli `NA`?
 
-**Strumenti giusti:**
+### Strumenti adatti
 
-- tooltip di RStudio
+- Tooltip di RStudio
 - `?mean`
-- esempi nell’help
+- Sezione "Examples" dell'help
+
+In questo caso non serve cercare soluzioni online: l'informazione è già nella documentazione.
+
 
 ## Caso 2: Non so se esiste una funzione
 
-So cosa voglio ottenere, ma non so se R ha già qualcosa per farlo
+Sai quale risultato vuoi ottenere, ma non sai se R offre già uno strumento per farlo.
 
 Esempio:
 
 > Esiste un modo per leggere file Excel?
 
-**Strumento giusto:**
+### Strumento adatto
 
-- Google
+- Motore di ricerca (es. Google)
 
-Qui cerchi idee, non soluzioni complete.
-Anche solo scoprire il nome di una funzione è già un successo.
+Qui non stai cercando codice pronto, ma:
+- il nome di un pacchetto
+- il nome di una funzione
+- una direzione di ricerca
+
+Trovare il nome corretto è spesso metà del lavoro.
+
 
 ## Caso 3: Non so combinare i pezzi
 
-Conosco le funzioni, ma non riesco a incastrarle per ottenere il risultato
+Conosci le funzioni, ma non riesci a integrarle in modo coerente.
 
 Esempio:
 
-> Ho i dati, so filtrarli, so riassumerli… ma non insieme
+> Ho i dati, so filtrarli, so riassumerli... ma non riesco a farlo in un unico flusso.
 
-**Strumenti giusti:**
+### Strumenti adatti
 
 - Stack Overflow
-- LLM come ChatGPT quando sarete più bravi
+- Documentazione dei pacchetti
+- LLM (quando sai valutare criticamente le risposte)
 
-Qui stai cercando schemi e modi di lavorare, non righe da copiare.
+In questo caso stai cercando:
+- uno schema di lavoro
+- un esempio strutturato
+- una sequenza logica
+
+Non copiare codice senza capirlo. L'obiettivo è comprendere la struttura.
+
 
 ## Caso 4: Il codice non funziona e non so perché
 
-> Ho scritto qualcosa, ma R si lamenta
+Hai scritto qualcosa, ma compare un errore.
 
-Qui entra in gioco la cosa più importante: scomporre il problema.
+Prima di chiedere aiuto, fai questo:
 
-Quando qualcosa non funziona, prima di chiedere aiuto:
+1. Isola il codice che genera l'errore  
+2. Elimina tutto ciò che non è necessario  
+3. Ricrea i dati in forma minimale  
+4. Verifica che l'errore persista  
 
-- prendi il codice che dà errore
-- elimina tutto quello che non serve
-- ricrea i dati in modo minimale
-- verifica che l’errore rimanga
+Quello che rimane è un **esempio minimo riproducibile**.
 
-Quello che resta è un esempio minimo riproducibile.
-
-Questa operazione:
-
+Questo passaggio:
 - chiarisce il problema
-- spesso lo risolve da sola
-- ti rende aiutabile
+- spesso porta alla soluzione
+- rende possibile ricevere aiuto efficace
 
-## In sintesi:
+Senza un esempio minimo riproducibile, è difficile che qualcuno possa aiutarti.
 
-- capisci il problema che hai
-- scegli lo strumento giusto
-- scomponi il codice
 
-Con questi passaggi avrai davvero il controllo su R e sui dati.
+## Punto chiave dell'episodio
+
+Il problema non è "chiedere aiuto".  
+Il problema è **chiederlo nel modo sbagliato**.
+
+Per lavorare bene con R devi:
+
+- distinguere il tipo di blocco
+- usare lo strumento corretto
+- scomporre il problema prima di cercare soluzioni
+
+Questa competenza è più importante della singola funzione che stai cercando.
+
+
+## In sintesi
+
+Quando ti blocchi:
+
+1. Identifica che tipo di problema hai
+2. Scegli lo strumento adeguato
+3. Riduci il problema al minimo riproducibile
+
+Questo è il metodo.
