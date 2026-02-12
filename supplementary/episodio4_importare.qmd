@@ -40,7 +40,6 @@ Al termine di questa parte dovresti sapere:
 
 Non è una guida completa all'importazione dati: è il minimo necessario per far funzionare il report.
 
----
 
 ## Dove si trovano i dati
 
@@ -59,7 +58,6 @@ I file in `data/`:
 
 Gli script e il report devono adattarsi ai dati, non il contrario.
 
----
 
 ## Importare dati da CSV
 
@@ -103,7 +101,6 @@ Anche `read_excel()` restituisce una tabella.
 Argomenti utili includono:
 
 - `sheet` per scegliere il foglio
-
 - `range` per specificare l'intervallo di celle
 
 Per la documentazione completa: `?read_excel()`.
@@ -111,7 +108,6 @@ Per la documentazione completa: `?read_excel()`.
 Negli episodi successivi:
 
 - vedremo come esplorare i dati appena importati
-
 - sostituiremo `read.csv()` con `fread()` del pacchetto `data.table`
 
 ## Errori comuni
