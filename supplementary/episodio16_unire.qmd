@@ -22,32 +22,25 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio abbiamo unito dati provenienti da **più file**.
+Unire dati provenienti da **più file**.
 
-Nella realtà infatti, spesso i dati non stanno mai tutti nello stesso file.
-
-L'obiettivo non è imparare tutti i tipi di unione.
-L'obiettivo è **ottenere una tabella completa e coerente per il report**.
+Spesso i dati non stanno tutti nello stesso file.  
+L'obiettivo è ottenere **una tabella completa e coerente** per il report, non imparare tutte le tecniche possibili di unione.
 
 
 ## Il problema reale
 
 Spesso abbiamo:
 
-- una tabella con **misure o risultati**
-- una tabella con **informazioni descrittive**
-
-Esempio:
-
-- `misure`: numeri, tempi, date
-- `elenco_comuni`: nomi leggibili, descrizioni
+- una tabella con **misure o risultati** (`misure`)  
+- una tabella con **informazioni descrittive** (`elenco_comuni`)
 
 Da sole:
 
-- i numeri non sono interpretabili
-- le descrizioni non hanno dati
+- i numeri non sono interpretabili  
+- le descrizioni non hanno dati associati  
 
 Serve **metterle insieme**.
 
@@ -56,17 +49,16 @@ Serve **metterle insieme**.
 
 Per unire due tabelle serve:
 
-- una colonna presente in entrambe
+- una colonna presente in entrambe  
 - che rappresenti **la stessa cosa**
 
-Esempio:
+Esempi:
 
-- codice del punto di campionamento
-- identificativo del sito
-- codice del campione
+- codice del punto di campionamento  
+- identificativo del sito  
+- codice del campione  
 
-Se questa colonna è sbagliata,  
-**l'unione sarà concettualmente sbagliata**, anche se il codice “funziona”.
+Se questa colonna è sbagliata, l'unione sarà concettualmente errata, anche se il codice "funziona".
 
 
 ## Unire i dati con `merge()`
@@ -84,18 +76,17 @@ misure_complete <- merge(
 )
 ```
 
-Questo crea una nuova tabella che contiene:
+Risultato:
 
-- tutte le colonne di `misure`
-- tutte le colonne di `elenco_comuni`
+- tutte le colonne di `misure` e `elenco_comuni`
 - solo le righe che hanno corrispondenza
-- se avessi avuto dei campioni associati a punti di campionamento al di fuori dei comuni in `elenco_comuni` o comuni per i quali non erano stati prelevati campioni, non avrei trovato queste informazioni in `misure_completo`.
+- eventuali dati senza corrispondenza vengono esclusi
 
-Stiamo unendo solo quello che compare in entrambe le tabelle.
+Questa operazione produce una tabella coerente, pronta per analisi e grafici.
 
 ## I controlli fondamentali
 
-Ogni volta che unisci dati, devi controllare.
+Ogni unione richiede controlli.
 
 ### Il numero di righe
 
@@ -109,7 +100,7 @@ nrow(misure_complete)
 
 - se aumenta → stai duplicando dati
 - se diminuisce → stai perdendo dati
-- se è uguale → bene (ma non basta)
+- se è uguale → bene, ma non basta
 
 ### Valori mancanti
 
@@ -119,23 +110,29 @@ nrow(misure_complete)
 misure_complete[is.na(nome_comune)]
 ```
 
-Serve a verificare se:
+Serve a verificare:
 
-- alcune righe non hanno trovato corrispondenza
-- ci sono errori nei codici di collegamento
+- righe senza corrispondenza
+- errori nei codici di collegamento
 
-Tutte le volte in cui ho preso lucciole per lanterne analizzando dati, la colpa era di una unione!
+Spesso problemi nei report nascono proprio da unioni sbagliate.
 
 ## Per approfondire
 
-- nella console `browseVignettes("data.table")`, clicca su "Joins in `data.table`"
+- nella console `browseVignettes("data.table")` → *Joins in `data.table`*.
 
-## In sintesi
+## Punto chiave
 
-- i dati spesso arrivano da file diversi
+`merge()` permette di unire due dataset con una colonna in comune.
+L'unione di dati può comportare la perdita o la duplicazione non voluta di informazioni:
+è sempre meglio verificare che il risultato ottenuto sia quello desiderato.
+
+In sintesi
+
+- i dati arrivano spesso da file diversi
 - serve una colonna in comune per unirli
 - `merge()` è sufficiente per il nostro scopo
-- i controlli sono obbligatori
-- unire i dati aiuta a rendere l'analisi interpretabile
+- controlli su righe e valori mancanti sono obbligatori
+- unire i dati rende l'analisi interpretabile e il report affidabile
 
-Se i dati sono collegati bene, il report può finalmente parlare (e non dire scemate).
+Se i dati sono collegati correttamente, il report può finalmente raccontare i risultati, non solo mostrare numeri.
