@@ -22,37 +22,38 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio facciamo la prima modifica reale ai dati.
+In questo episodio effettuiamo la prima modifica ai dati.
 
-- Non tocchiamo i valori.
-- Non tocchiamo le date.
-- Non facciamo analisi.
+Non interveniamo sui valori.  
+Non modifichiamo date o numeri.  
+Non facciamo analisi.
 
-Puliamo solo **i nomi delle colonne**.
+Puliamo esclusivamente **i nomi delle colonne**.
 
-È un passaggio semplice, ma fondamentale:
-nomi puliti rendono tutto il resto più leggibile e meno fragile.
+È un passaggio semplice ma fondamentale: nomi coerenti rendono il codice più leggibile e meno fragile.
+
 
 ## Perché pulire le intestazioni
 
-I nomi delle colonne arrivano spesso da:
+I nomi delle colonne spesso provengono da:
 
-- fogli Excel
-- esportazioni automatiche
-- sistemi esterni
+- fogli Excel  
+- esportazioni automatiche  
+- sistemi esterni  
 
-E contengono:
+Possono contenere:
 
-- spazi
-- maiuscole
-- caratteri strani
-- nomi lunghi e incoerenti
+- spazi  
+- maiuscole e minuscole miste  
+- caratteri non standard  
+- nomi lunghi o incoerenti  
 
-In R questi nomi:
-- funzionano
-- ma rendono il codice più scomodo da scrivere e leggere
+In R questi nomi funzionano, ma rendono il codice meno chiaro e più soggetto a errori.
+
+Stabilire una convenzione fin dall’inizio semplifica tutto il lavoro successivo.
+
 
 ## I nomi delle colonne sono un vettore
 
@@ -64,18 +65,17 @@ I nomi delle colonne si ottengono con:
 colnames(misure)
 ```
 
-Il risultato è un elenco di caratteri: R li chiama vettori.
+Il risultato è un vettore di caratteri.
 
-Questo è importante perché:
+Questo significa che:
 
 - possiamo applicare funzioni
-- possiamo trasformarli tutti insieme
-- non stiamo toccando i dati, solo le etichette
+- possiamo trasformare tutti i nomi in modo uniforme
+- non stiamo modificando i dati, ma solo le etichette
 
-## Rimuovere gli spazi
+## Sostituire gli spazi
 
 Un primo intervento tipico:
-
 
 ```{r}
 #| eval: false
@@ -83,19 +83,17 @@ Un primo intervento tipico:
 colnames(misure) <- gsub(" ", "_", colnames(misure))
 ```
 
-Qui stiamo dicendo:
+L’operazione è composta da tre passaggi:
 
-- prendi tutti i nomi con `colnames(misure)`
-- sostituisci gli spazi con *underscore* `gsub(" ", "_", ...)`
-- riassegna il risultato alle colonne. `colnames(misure) <- ...`
+- leggiamo i nomi con `colnames(misure)`
+- sostituiamo gli spazi con _ tramite `gsub()`
+- riassegniamo il risultato ai nomi delle colonne
 
-**Nota bene:** `<-`, scritto `<``-` è una freccia ed è come dire uguale. Prende tutto quello che è alla sua destra e lo salva in quello che sta alla sua sinistra.
+L’operatore `<-` assegna alla variabile a sinistra il risultato dell’espressione a destra.
 
-In questo caso prendiamo i nomi delle colonne, facciamo la sostituzione e lo risalviamo all'interno dei nomi delle colonne.
+## Rimuovere spazi iniziali o finali
 
-## Togliere gli spazi inutili
-
-A volte ci sono spazi all'inizio o alla fine, in questo caso abbiamo già sostituito tutto come _, ma meglio essere sicuri e fare ancora un po' di esercizio:
+Per eliminare eventuali spazi residui:
 
 ```{r}
 #| eval: false
@@ -103,12 +101,11 @@ A volte ci sono spazi all'inizio o alla fine, in questo caso abbiamo già sostit
 colnames(misure) <- trimws(colnames(misure))
 ```
 
-È una funzione semplice ma molto utile.
+`trimws()` rimuove spazi all’inizio o alla fine delle stringhe.
 
 ## Uniformare le maiuscole
 
-Decidiamo una regola.
-In questo corso useremo solo minuscole:
+In questo corso adottiamo una convenzione semplice: solo minuscole.
 
 ```{r}
 #| eval: false
@@ -116,11 +113,11 @@ In questo corso useremo solo minuscole:
 colnames(misure) <- tolower(colnames(misure))
 ```
 
-Non è obbligatorio: è una scelta di stile ma ci eviterà confusione.
+Non è obbligatorio, ma riduce ambiguità e differenze accidentali.
 
-## Mettere tutto insieme
+## Concatenare le trasformazioni
 
-Tutti questi passaggi possono essere concatenati:
+Le operazioni possono essere combinate usando la pipe:
 
 ```{r}
 #| eval: false
@@ -131,28 +128,25 @@ colnames(misure) <- colnames(misure) |>
   tolower()
 ```
 
-`|>`, scritto `|``>` è la pipe di R: prende il risultato della funzione alla sua sinistra e lo scarica nel primo argomento della funzione alla sua destra.
+L’operatore `|>` passa il risultato della funzione a sinistra come primo argomento della funzione a destra.
+Se la funzione non utilizza il primo argomento, si può indicare esplicitamente il punto di inserimento con il segnaposto `_`.
 
-Nel caso volessi scaricare il risultato della funzione alla sua sinistra in un argomento diverso dal primo della funzione a destra, utilizzerò il segnaposto `_`.
-Qui lo uso con `gsub()` che vuole sapere dove fare la sostituzione come terzo argomento (`x = ...`), anziché come primo.
+## Punto chiave dell'episodio
 
-## Cosa abbiamo fatto davvero
+Pulire le intestazioni significa:
 
-In questo episodio:
+- stabilire una convenzione
+- applicarla in modo sistematico
+- rendere il codice più stabile
 
-- non abbiamo cambiato i dati
-- non abbiamo fatto analisi
-- non abbiamo introdotto concetti complessi
-
-Abbiamo solo deciso di lavorare con nomi semplici e coerenti.
-
-È una scelta che pagherà più avanti.
+Non abbiamo modificato i dati.
+Abbiamo reso più solida la struttura su cui lavoreremo.
 
 ## In sintesi
 
 - `colnames()` restituisce un vettore
-- i vettori si possono trasformare con funzioni
-- pulire i nomi rende il codice più chiaro
-- iniziare da qui riduce errori futuri
+- i vettori possono essere trasformati con funzioni
+- spazi e maiuscole vanno uniformati
+- intervenire sui nomi riduce errori futuri
 
-Questo è il primo passo verso un report stabile.
+È un intervento minimo con effetti strutturali sul resto del lavoro.
