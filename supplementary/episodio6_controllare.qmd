@@ -22,25 +22,27 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo dell'episodio
 
-In questo episodio non modifichiamo i dati: l'analisi deve ancora iniziare.
+In questo episodio non modifichiamo i dati.
 
-Facciamo una cosa molto più semplice (e molto più importante):
-li guardiamo.
+L'analisi non è ancora iniziata.  
+Prima dobbiamo capire con che cosa stiamo lavorando.
 
-L'obiettivo è rispondere a domande banali ma fondamentali:
+Le domande a cui rispondere sono semplici:
 
-- che tipo di oggetto è questo?
-- quante righe e colonne ha?
+- che tipo di oggetto abbiamo importato?
+- quante righe e quante colonne contiene?
 - come si chiamano le variabili?
 - che tipo di valori contengono?
 
-Se salti questo passaggio, difficilmente otterrai un report funzionante.
+Questo passaggio è preliminare a qualsiasi trasformazione o analisi.
 
-## Guardare la struttura: `str()`
+---
 
-Il primo comando da usare è sempre:
+## Controllare la struttura: `str()`
+
+Il primo comando da usare è:
 
 ```{r}
 #| eval: false
@@ -51,21 +53,19 @@ str(misure)
 `str()` mostra:
 
 - il tipo dell'oggetto (`data.frame`, `data.table`, ecc.)
-- il nome delle colonne
+- i nomi delle colonne
 - il tipo di ogni colonna (numero, testo, data, logico)
-- qualche valore di esempio
+- alcuni valori di esempio
 
-Non serve capire tutto.
-Serve notare le cose strane.
+Non è necessario interpretare ogni dettaglio.
 
-Esempi tipici:
+È sufficiente verificare che:
 
-- date che sono testo (`chr`)
-- numeri che sono testo (`chr`)
-- colonne con nomi poco chiari
+- le date siano effettivamente date
+- i numeri siano numeri
+- i nomi delle colonne siano coerenti con le aspettative
 
-## Quante righe e quante colonne
-
+## Numero di righe e colonne
 
 ```{r}
 #| eval: false
@@ -74,15 +74,17 @@ nrow(misure)
 ncol(misure)
 ```
 
-Servono per capire:
+Questi comandi servono a verificare:
 
-- se i dati sono "pochi" o "tanti"
-- se manca qualcosa
-- se sono più o meno quelli che ti aspettavi
+- la dimensione del dataset
+- se il numero di osservazioni è plausibile
+- se le variabili presenti sono quelle attese
 
-## Vedere qualche dato
+Un controllo rapido evita errori più avanti nel flusso di lavoro.
 
-Le prime dieci righe:
+## Visualizzare alcune righe
+
+Prime righe:
 
 ```{r}
 #| eval: false
@@ -90,7 +92,7 @@ Le prime dieci righe:
 head(misure)
 ```
 
-Le ultime dieci righe:
+Ultime righe:
 
 ```{r}
 #| eval: false
@@ -98,13 +100,30 @@ Le ultime dieci righe:
 tail(misure)
 ```
 
-Questi comandi servono solo ad aiutare a farci un'idea su come sono organizzati i dati su cui lavoreremo.
+Questi comandi permettono di osservare esempi concreti dei dati:
+
+- formato delle date
+- presenza di valori mancanti
+- coerenza tra colonne
+
+Non servono per analizzare, ma per orientarsi.
+
+## Punto chiave dell'episodio
+
+Prima di trasformare o analizzare un dataset:
+
+1. controlla la struttura
+2. verifica i tipi delle variabili
+3. osserva alcune righe
+
+Questo passaggio è semplice ma fondamentale.
+Saltarlo significa lavorare senza sapere con precisione su cosa si sta operando.
 
 ## In sintesi
 
-- `str()` è il comando più importante
-- `head()` e `tail()` servono per vedere esempi concreti
-- `nrow()` e `ncol()` danno il contesto
+- `str()` per capire la struttura
+- `nrow()` e `ncol()` per il contesto
+- `head()` e `tail()` per esempi concreti
 - nessuna modifica ai dati, per ora
 
-Questo episodio serve a orientarsi, non a risolvere problemi.
+L'obiettivo è orientarsi, non risolvere problemi.
