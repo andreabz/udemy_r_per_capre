@@ -22,7 +22,7 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Obiettivo dell'episodio
+## Obiettivo degli episodi
 
 Imparare a **modificare i dati** usando `data.table`.
 
