@@ -56,8 +56,7 @@ di `r params$target` giorni.
 
 Nel report finale comparirà qualcosa come:
 
-> Nel 2024 sono stati analizzati 65 campioni con tempi di analisi superiori
-all'obiettivo di 15 giorni.
+> Nel 2024 sono stati analizzati 65 campioni con tempi di analisi superiori all'obiettivo di 15 giorni.
 
 Senza scrivere nulla a mano.
 
