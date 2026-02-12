@@ -36,10 +36,9 @@ Alla fine, avrai un report pronto da condividere o aggiornare semplicemente camb
 │
 ├── R/
 │ ├── quarto_render.R # script per generare automaticamente i report
-| └── make_supplementary.R # script per generare il materiale di supporto
+│ └── make_supplementary.R # script per generare il materiale di supporto
 │
 ├── supplementary/ # documenti Quarto per il materiale di supporto
-|
 ├── report.qmd # documento Quarto principale
 └── README.md
 ```
