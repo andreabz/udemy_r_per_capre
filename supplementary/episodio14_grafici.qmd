@@ -26,31 +26,29 @@ Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 
 In questo episodio trasformiamo i **riassunti numerici** in **grafici**.
 
-Non impariamo `ggplot2`.
-Non esploriamo tutti i tipi di grafico.
-Non cerchiamo l’estetica perfetta.
+Non impariamo `ggplot2` in profondità.  
+Non esploriamo tutti i tipi di grafico.  
+Non cerchiamo l'estetica perfetta.
 
-Costruiamo **i grafici che servono al report**.
+L'obiettivo è costruire **grafici utili al report**.
+
+---
 
 ## Da tabella a grafico
 
-I grafici che useremo partono da tabelle già riassunte, come quelle create nell'episodio precedente.
+I grafici partono da tabelle già riassunte, come quelle create nell'episodio precedente.
 
-Questo è importante:
-
-- il grafico **non fa i conti**
+- il grafico **non calcola nulla**  
 - il grafico **mostra risultati già calcolati**
 
-## Il grafico del numero di campioni
+---
 
-Obiettivo:
+## Grafico del numero di campioni
 
-- mostrare l'andamento mensile del carico di lavoro
+Obiettivo: mostrare l'andamento mensile del carico di lavoro.
 
-Struttura:
-
-- asse x: mese
-- asse y: numero di campioni
+- asse x: mese  
+- asse y: numero di campioni  
 
 Esempio concettuale:
 
@@ -69,32 +67,34 @@ ggplot(riassunto,
     theme_minimal()
 ```
 
-- `ggplot2` permette di specificare un grafico a strati
-- `ggplot()` vuole sapere con che dati dovrà lavorare
-- `aes()` necessita delle informazioni contenute sugli assi
-- `geom_*()` permette di specificare che tipo di grafico vogliamo: ce ne sono tantissimi e posso sovrapporre diverse tipologie di grafici
-- `labs()` permette di ritoccare la descrizione degli assi
-- `theme_minimal()` permette di applicare un tema preconfezionato per migliorare la leggibilità del grafico.
+- `ggplot()` specifica il dataset
+- `aes()` definisce gli assi
+- `geom_*()` definisce il tipo di grafico (punti, linee, barre…)
+- `labs()` modifica etichette e descrizioni
+- `theme_minimal()` migliora leggibilità e pulizia
 
-Posso assegnare un intero grafico a una variabile, con il classico `nome_variabile <- ggplot(...)`, così da poterlo richiamare in seguito.
+Si può salvare il grafico in una variabile con `nome_variabile <- ggplot(...)` per riutilizzarlo.
 
 ## Per approfondire
 
-- `browseVignettes("ggplot2")` nella console: inizia da "Introduction to `ggplot2`"
+- `browseVignettes("ggplot2")` nella console: inizia da *Introduction to `ggplot2`*
 - stampa <https://rstudio.github.io/cheatsheets/data-visualization.pdf> per dare una rapida occhiata alla sintassi di `ggplot2`
-- prova a prendere ispirazione dai grafici di <https://r-graph-gallery.com/ggplot2-package.html>
+- prendi ispirazione da <https://r-graph-gallery.com/ggplot2-package.html>
+
+## Punto chiave
+
+`ggplot2` permette di creare grafici per strati a partire da dati già riassunti.
+I grafici possono essere assegnati a variabili per richiamarli e combinarli.
 
 ## In sintesi
 
 - i grafici partono da dati già riassunti
-- i grafici devono rispondere a domande precise
-- `ggplot2` permette di creare grafici a strati
-- prima specifico il dataset, poi le informazioni sugli assi e poi cosa voglio fare
+- devono rispondere a domande precise del report
+- `ggplot2` crea grafici a strati
+- procedura: dataset → assi → tipo di grafico → eventuali ritocchi
 
-Con questo episodio abbiamo soddisfatto il primo requisito del nostro report e abbiamo ottenuto
+Con questo episodio otteniamo:
 
-> Un grafico con:
->
-> - numero di campioni analizzati mensilmente;
-> - tempi di analisi tipici per ogni mese.
+- un grafico del numero di campioni mensili
+- la possibilità di mostrare tempi di analisi tipici per ogni mese
 
