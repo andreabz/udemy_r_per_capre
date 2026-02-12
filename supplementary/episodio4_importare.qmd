@@ -22,43 +22,48 @@ format:
 Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 :::
 
-## Introduzione
+## Obiettivo degli episodi
 
 In questi episodi abbiamo importato dati da file esterni:
 
-- un file CSV
-- un file Excel
+- un file CSV  
+- un file Excel  
 
-Nel corso i dati non vengono mai inseriti a mano.
-Arrivano sempre da file già esistenti, come succede nel lavoro reale.
+Nel corso i dati non vengono inseriti a mano.  
+Arrivano sempre da file già esistenti, come avviene nel lavoro reale.
 
-Questo documento serve come riferimento rapido quando:
+Al termine di questa parte dovresti sapere:
 
-- devi ricordare quale funzione usare
-- qualcosa “non torna” subito dopo aver letto un file
+- dove si trovano i dati nel progetto  
+- quale funzione usare per importarli  
+- quali problemi possono emergere nella fase di lettura  
 
-Non è una guida completa all'importazione dati: è il minimo indispensabile per far funzionare il report.
+Non è una guida completa all'importazione dati: è il minimo necessario per far funzionare il report.
 
-## Dove stanno i dati nel progetto
+---
 
-Nel progetto del corso i dati stanno nella cartella: `data/`
+## Dove si trovano i dati
 
-Dentro trovi:
+Nel progetto del corso i dati si trovano nella cartella `data/`.
 
-- file CSV
-- file Excel
+Contiene:
 
-I file nella cartella `data/`:
+- file CSV  
+- file Excel  
 
-- sono input del report
-- **non vanno modificati**
-- vengono letti così come sono
+I file in `data/`:
 
-Il report e gli script devono adattarsi ai dati, non il contrario.
+- sono input del report  
+- non vanno modificati direttamente  
+- vengono letti così come sono  
+
+Gli script e il report devono adattarsi ai dati, non il contrario.
+
+---
 
 ## Importare dati da CSV
 
-Per i file csv utilizziamo la funzione `read.csv()`.
+Per i file CSV utilizziamo la funzione `read.csv()`.
 
 ```{r}
 #| eval: false
@@ -66,21 +71,24 @@ Per i file csv utilizziamo la funzione `read.csv()`.
 elenco_comuni <- read.csv("data/comuni_al.csv")
 ```
 
-Questa funzione ha come primo argomento il percorso del file da caricare, poi è possibile specificare:
+Il primo argomento è il percorso del file.
 
-- `header = FALSE` se il file non presenta nomi di colonna
-- `sep = ";"` se il separatore tra campi è punto e virgola anziché virgola
-- `dec = ","` se il separatore decimale è virgola anziché punto
-- `encoding = "Latin-1"` se ho accenti strani o caratteri all'interno del file
-- tanti altri argomenti che puoi conoscere e provare facendoti aiutare da R scrivendo `?read.csv` nella console di RStudio, come vedrai nell'episodio 8.
+Argomenti comuni:
 
-Il risultato sarà una tabella che, nel gergo di R, si chiama `data.frame`.
+- `header = FALSE` se il file non contiene nomi di colonna
+- `sep = ";"` se il separatore è il punto e virgola
+- `dec = ","` se il separatore decimale è la virgola
+- `encoding = "Latin-1"` in caso di problemi con caratteri accentati
+
+Per vedere tutti gli argomenti disponibili `?read.csv` nella console di RStudio, come vedrai nell'episodio 8.
+
+Il risultato è una tabella (`data.frame`).
 
 ## Importare dati da Excel
 
-Per i file Excel utilizziamo la libreria `readxl`.
+Per i file Excel utilizziamo il pacchetto `readxl`.
 
-La installiamo con `install.packages(readxl)` e poi scriviamo:
+Installazione (una sola volta): `install.packages(readxl)` e poi caricamento e lettura:
 
 ```{r}
 #| eval: false
@@ -90,41 +98,63 @@ library(readxl)
 misure <- read_excel("data/dati_campioni.xlsx")
 ```
 
-Anche questa funzione restituisce una tabella e prende come primo argomento il percorso del file. Altri argomenti includono il nome del foglio e il range di celle che contengono i dati: li puoi conoscere tutti digitando `?read_excel` all'interno della console, dopo aver installato e caricato il pacchetto `readxl`.
+Anche `read_excel()` restituisce una tabella.
 
-Nell'episodio 6 vedremo come dare un'occhiata ai dati appena importati e nell'episodio 9 sostituiremo `read.csv()` con la funzione `fread()` di `data.table`.
+Argomenti utili includono:
+
+- `sheet` per scegliere il foglio
+
+- `range` per specificare l'intervallo di celle
+
+Per la documentazione completa: `?read_excel()`.
+
+Negli episodi successivi:
+
+- vedremo come esplorare i dati appena importati
+
+- sostituiremo `read.csv()` con `fread()` del pacchetto `data.table`
 
 ## Errori comuni
 
-La fase di importazione è spesso una delle più delicate: non aspettarti che vada tutto bene al primo tentativo, dovrai fare qualche prova per trovare i giusti parametri per gli argomenti.
+La fase di importazione è spesso delicata.
 
-Gli errori più frequenti sono:
+Problemi frequenti:
 
 - date lette come testo
 - numeri letti come caratteri
-- nomi delle colonne con spazi o maiuscole
-- gestione errata dei caratteri accentati.
+- nomi di colonna con spazi o maiuscole inattese
+- caratteri accentati non interpretati correttamente
 
-Nel corso non risolviamo tutto subito, prima importiamo e poi, negli episodi successivi, sistemiamo i problemi uno per uno.
+Nel corso non risolviamo tutto subito: prima importiamo, poi affrontiamo i problemi in modo sistematico.
 
-## Dove questi dati vengono usati
+## Come verranno usati i dati
 
-I dati importati qui verranno poi usati per:
+I dati importati verranno utilizzati per:
 
 - esplorazione
 - pulizia
 - aggregazioni
 - grafici
-- report automatici
-- rendering in serie
+- generazione del report
+- rendering ripetuto
 
-Se l'importazione è corretta, tutto il resto fila.
+Se l'importazione è corretta, tutto il resto del flusso diventa più semplice.
+
+## Punto chiave degli episodi
+
+Il report non contiene dati scritti a mano.
+
+- Legge file esterni dalla cartella `data/`
+- li importa con funzioni appropriate
+- e lavora su tabelle strutturate.
+
+Questo è il primo passo per costruire un processo riproducibile.
 
 ## In sintesi
 
-- i dati stanno nella cartella `data/`
-- CSV → `read.csv()` (almeno per ora)
+- i dati si trovano nella cartella `data/`
+- CSV → `read.csv()` (per ora)
 - Excel → `read_excel()`
-- Scopriremo come controllare i risultati nei prossimi episodi
+- eventuali problemi si risolvono regolando gli argomenti delle funzioni
 
-Questo è tutto quello che serve sapere a questo punto del corso.
+Questo è tutto ciò che serve sapere in questa fase del corso.
