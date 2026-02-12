@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 0 - cosa dobbiamo fare"
+subtitle: "Materiale di supporto per l'episodio 0 - la consegna del corso"
 lang: it
 format:
   pdf:
@@ -25,111 +25,111 @@ Repository del corso: <https://github.com/andreabz/udemy_r_per_capre>
 
 ## Introduzione
 
-Questo corso non è una panoramica su R.  
-Non è un corso “enciclopedico”.  
-Non è nemmeno un corso di statistica.
+Questo corso non è una panoramica completa su R.  
+Non è un corso enciclopedico.  
+Non è un corso di statistica.
 
-È un corso che ha una consegna molto precisa.
+Ha una consegna precisa.
 
-Questo documento serve a chiarire, fin dall’inizio:
+Questo documento chiarisce fin dall'inizio:
 
-- che tipo di report costruiremo
-- che problema concreto stiamo risolvendo
-- cosa devi aspettarti alla fine del corso
+- che tipo di report costruiremo  
+- quale problema concreto stiamo risolvendo  
+- cosa dovrai essere in grado di fare alla fine  
 
-Se questa consegna ti è chiara, tutto il resto diventa più semplice.
+Se la consegna è chiara, tutto il resto diventa più semplice.
 
 
 ## Il problema da cui partiamo
 
-Immagina una situazione molto comune:
+Situazione tipica:
 
-- hai dei dati in Excel o CSV
-- ogni mese (o settimana) arrivano nuovi file
-- devi fare sempre **lo stesso report**
-- copi numeri da Excel
-- incolli grafici in Word
-- sistemi tabelle a mano
-- speri di non sbagliare
+- hai dati in Excel o CSV  
+- ogni mese (o settimana) arrivano nuovi file  
+- devi produrre sempre lo stesso report  
+- copi numeri da Excel  
+- incolli grafici in Word  
+- sistemi tabelle a mano  
 
-È noioso.  
 È lento.  
-È fragile.
+È fragile.  
+È difficile da controllare.
 
-E soprattutto: non è riproducibile.
+E soprattutto non è riproducibile.
 
-Se tra sei mesi qualcuno ti chiede come hai calcolato un numero, la risposta non può essere che non ricordi".
+Se tra sei mesi qualcuno ti chiede come è stato calcolato un numero, la risposta deve essere nel codice, non nella tua memoria.
+
 
 ## La consegna del corso
 
 Costruiremo un report automatico che:
 
-- parte da file Excel e CSV
-- elabora i dati in modo riproducibile
-- produce un report leggibile (HTML, e poi PDF/Word)
-- si aggiorna automaticamente quando cambiano i dati
+- parte da file Excel e CSV  
+- elabora i dati in modo riproducibile  
+- produce un documento leggibile (HTML e poi PDF/Word)  
+- si aggiorna automaticamente quando cambiano i dati  
 
-L’obiettivo è semplice:
+L'obiettivo è semplice:
 
 dato un nuovo file, eseguire uno script e ottenere il report  
 senza copiare numeri  
 senza incollare grafici  
-senza rifare il lavoro a mano.
+senza modificare il documento a mano.
 
 
 ## Che tipo di report costruiremo
 
-Il report finale simula una situazione lavorativa realistica.
+Il report simula una situazione lavorativa realistica.
 
 ### Contesto
 
 Dati che descrivono:
 
-- campioni analizzati
-- tempi di analisi
-- distribuzione nel tempo
+- campioni analizzati  
+- tempi di analisi  
+- distribuzione nel tempo  
 
 ### Contenuto del report
 
-Il report conterrà:
+Il documento conterrà:
 
-- una breve introduzione testuale
+- una breve introduzione testuale  
 - grafici:
-  - andamento del numero di campioni nel tempo
-  - andamento dei tempi di analisi
-  - confronto con un valore target
+  - andamento del numero di campioni nel tempo  
+  - andamento dei tempi di analisi  
+  - confronto con un valore target  
 - una tabella riepilogativa con:
-  - numero di campioni analizzati per ogni comune della provincia di Alessandria
+  - numero di campioni analizzati per ciascun comune della provincia di Alessandria  
 
-Il tutto verrà ripetuto automaticamente per diversi metodi di analisi e diversi target.
+La stessa struttura verrà riutilizzata automaticamente per diversi metodi di analisi e diversi target.
 
-Non cambieremo il documento a mano.  
-Cambieranno solo i dati.
+La struttura del documento non cambia.  
+Cambiano solo i dati.
 
 
-## Cosa NON faremo
+## Cosa non faremo
 
 In questo corso:
 
-- non facciamo statistica avanzata  
+- non affrontiamo statistica avanzata  
 - non facciamo machine learning  
 - non impariamo tutto R  
 - non costruiamo dashboard interattive  
 
-Useremo solo quello che serve per completare la consegna.
+Useremo solo ciò che serve per completare la consegna.
 
 
-## Cosa imparerai davvero
+## Cosa imparerai
 
 Alla fine del corso saprai:
 
-- leggere dati da Excel e CSV
-- esplorarli in modo sensato
-- pulirli quanto basta
-- aggregarli
-- visualizzarli
-- inserirli in un report automatico
-- rigenerare lo stesso report tutte le volte che serve
+- leggere dati da Excel e CSV  
+- esplorarli in modo ordinato  
+- pulirli quanto necessario  
+- aggregarli  
+- visualizzarli  
+- inserirli in un report automatico  
+- rigenerare lo stesso report ogni volta che serve  
 
 Avrai uno script che trasforma dati grezzi in un documento pronto da consegnare.
 
@@ -145,9 +145,5 @@ La consegna è questa:
 > Prendere dati ripetitivi  
 > smettere di copiarli a mano  
 > e produrre report automatici affidabili.
-
-Con meno errori.  
-Meno tempo perso.  
-Meno intervento manuale.
 
 Tutto il corso ruota attorno a questo.
