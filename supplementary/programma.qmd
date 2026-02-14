@@ -1,0 +1,200 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Programma del corso"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+## A chi è rivolto questo corso
+
+Questo corso è pensato per:
+
+- chi lavora con Excel e vuole smettere di copiare e incollare tra file
+- chi prepara report periodici sempre simili tra loro
+- chi vuole automatizzare analisi e report senza diventare sviluppatore
+- studenti e professionisti che vogliono un flusso di lavoro riproducibile
+- chi parte da zero con R ma vuole un obiettivo concreto
+
+Non è necessario essere programmatori.
+Serve solo la disponibilità a scrivere codice semplice in modo ordinato.
+
+---
+
+## A chi NON è rivolto
+
+Questo corso non è adatto a:
+
+- chi cerca un corso avanzato di statistica teorica
+- chi vuole coprire ogni aspetto del linguaggio R
+- chi è già esperto di automazione con R e Quarto
+- chi non vuole scrivere codice
+
+Qui l’obiettivo non è imparare "tutto R",  
+ma costruire un sistema di lavoro automatico e riutilizzabile.
+
+---
+
+## Introduzione
+
+### Episodio 0 – Cos’è questo corso e cosa costruiremo
+
+- Il problema che risolviamo  
+- Esempio di report finale  
+- Struttura generale del progetto.
+
+---
+
+## Parte 1 – L’ambiente di lavoro
+
+### Episodio 1 – Installare R e RStudio
+
+Installazione e primo avvio.
+
+### Episodio 2 – Il progetto e il repository del corso
+
+Organizzare i file e usare GitHub come semplice cartella di supporto.
+
+### Episodio 3 – Cos’è Quarto e cos’è un file .qmd
+
+Titoli, testo ed elementi statici del report.
+
+---
+
+## Parte 2 – Importare i dati
+
+### Episodio 4 – Importare dati CSV
+
+Leggere correttamente file CSV.
+
+### Episodio 5 – Importare dati da Excel
+
+Installare una libreria e leggere file Excel.
+
+### Episodio 6 – Esplorare i dati
+
+Capire cosa c’è nei dati prima di usarli.
+
+### Episodio 7 – Modificare i nomi delle colonne
+
+Rendere le informazioni del dataset più leggibili e accessibili.
+
+---
+
+## Parte 4 – Cercare aiuto e leggere codice
+
+### Episodio 8 – Help, Google, Stack Overflow e esempi minimi
+
+Come chiedere aiuto e come capire le risposte.
+
+---
+
+## Parte 5 – Pulire e organizzare i dati con `data.table`
+
+### Episodio 9 – Sintassi base di `data.table` e filtri
+
+Selezionare i dati in modo chiaro ed efficiente.
+
+### Episodio 10 – Modificare i dati
+
+Aggiornare e trasformare colonne.
+
+### Episodio 11 – Calcolare nuove colonne
+
+Aggiungere informazioni.
+
+### Episodio 12 – Districare le informazioni
+
+Caso reale completo usando quanto imparato.
+
+---
+
+## Parte 6 – Preparare i risultati
+
+### Episodio 13 – Riassumere i dati
+
+Conteggi, medie, mediane e aggregazioni.
+
+### Episodio 14 – Grafici
+
+Creare grafici semplici e leggibili per un report.
+
+### Episodio 15 – Calcoli in linea
+
+Integrare i risultati di calcoli direttamente nel testo.
+
+### Episodio 16 – Unire dati
+
+Collegare tabelle diverse quando serve.
+
+### Episodio 17 – Tabelle nel report
+
+Creare tabelle leggibili con `kable`.
+
+---
+
+## Parte 7 – Il report automatico
+
+### Episodio 18 – Parametri nel report
+
+Preparare il report al suo riutilizzo.
+
+### Episodio 19 – La fabbrica di report
+
+Generare molti report simili scrivendone solo uno.
+
+---
+
+## Parte 8 – Il tocco finale
+
+### Episodio 20 – Output finali e formati
+
+HTML, PDF, Word e controllo dei chunk.
+
+---
+
+## Prima e dopo il corso
+
+### Prima
+
+- Copi dati da Excel
+- Fai calcoli manuali
+- Costruisci grafici a mano
+- Copi e incolli risultati in Word
+- Ogni mese rifai tutto da capo
+- Se cambi un numero, devi aggiornare tutto
+
+### Dopo
+
+- Importi i dati con una riga di codice
+- I calcoli si aggiornano automaticamente
+- I grafici si rigenerano da soli
+- Il report si produce con un click
+- Puoi riutilizzare la stessa struttura per altri progetti
+- Riduci errori manuali e tempo perso
+
+Il cambiamento non è imparare R.
+
+È passare da un flusso di lavoro manuale a un sistema riproducibile.
+
+## Risultato finale
+
+Alla fine del corso avrai:
+
+- un progetto completo e ordinato
+- un report automatico funzionante
+- una struttura riutilizzabile per altri progetti
+- meno copia-incolla tra Excel e Word
+- meno errori manuali

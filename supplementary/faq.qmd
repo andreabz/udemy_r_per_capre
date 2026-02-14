@@ -1,0 +1,109 @@
+---
+title: "R per capre - dal foglio di calcolo al report automatico"
+subtitle: "Domande frequenti (FAQ)"
+lang: it
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    margin-left: 2.5cm
+    margin-right: 2.5cm
+    margin-top: 3cm
+    margin-bottom: 3cm
+    fontsize: 11pt
+    mainfont: Inter
+    monofont: JetBrains Mono
+    linkcolor: teal
+    urlcolor: teal
+    toc: false
+---
+
+## Serve già conoscere R?
+
+No. Il corso parte dalle basi necessarie.
+Non è richiesto alcun background di programmazione.
+
+Se sai usare Excel, hai già tutte le competenze logiche necessarie.
+
+---
+
+## Serve conoscere statistica?
+
+No. L’obiettivo non è insegnare teoria statistica,
+ma costruire un flusso di lavoro per report automatici.
+
+Useremo solo i concetti necessari, spiegandoli in modo operativo.
+
+---
+
+## Che software devo installare?
+
+Tutti strumenti gratuiti:
+
+- R
+- RStudio
+- Quarto
+
+Eventualmente TinyTeX solo se vuoi generare PDF.
+
+---
+
+## È un corso teorico o pratico?
+
+È pratico.
+
+Costruiremo passo dopo passo un progetto reale:
+importazione dati → pulizia → analisi → grafici → report automatico.
+
+Ogni episodio ha un obiettivo concreto.
+
+---
+
+## Quanto tempo serve per completarlo?
+
+Gli episodi sono brevi (5–15 minuti).
+
+Il tempo reale dipende da quanto replichi gli esempi.
+Seguendo e provando il codice, puoi completarlo in pochi giorni.
+
+---
+
+## Posso usare i miei dati?
+
+Sì.
+
+La struttura che costruiamo è pensata per essere adattata
+a dataset aziendali, accademici o personali.
+
+---
+
+## È utile se lavoro già con Excel?
+
+Sì, ed è pensato proprio per te.
+
+Il corso non sostituisce Excel:
+ti permette di superare il limite del copia-incolla manuale.
+
+---
+
+## È troppo avanzato per me?
+
+No, se sei disposto a scrivere codice semplice.
+
+Sì, se non vuoi programmare nemmeno una riga.
+
+---
+
+## Alla fine saprò usare tutto R?
+
+No.
+
+Saprai usare R per costruire report automatici.
+Ed è una differenza importante.
+
+---
+
+## Riceverò aggiornamenti?
+
+Sì.
+Il corso viene migliorato progressivamente con chiarimenti e aggiunte.
