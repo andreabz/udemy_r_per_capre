@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 13 - riassumere i dati"
+subtitle: "Materiale di supporto per la lezione 14 - riassumere i dati"
 lang: it
 format:
   pdf:

@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per gli episodi 4 e 5 - importare i dati"
+subtitle: "Materiale di supporto per le lezioni 5 e 6 - importare i dati"
 lang: it
 format:
   pdf:

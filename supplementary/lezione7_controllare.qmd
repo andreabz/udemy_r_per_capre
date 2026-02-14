@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 6 - controllare i dati"
+subtitle: "Materiale di supporto per la lezione 7 - controllare i dati"
 lang: it
 format:
   pdf:

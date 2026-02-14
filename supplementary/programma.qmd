@@ -49,7 +49,7 @@ ma costruire un sistema di lavoro automatico e riutilizzabile.
 
 ## Introduzione
 
-### Episodio 0 – Cos’è questo corso e cosa costruiremo
+### Lezione 1 – Cos’è questo corso e cosa costruiremo
 
 - Il problema che risolviamo  
 - Esempio di report finale  
@@ -59,15 +59,15 @@ ma costruire un sistema di lavoro automatico e riutilizzabile.
 
 ## Parte 1 – L’ambiente di lavoro
 
-### Episodio 1 – Installare R e RStudio
+### Lezione 2 – Installare R e RStudio
 
 Installazione e primo avvio.
 
-### Episodio 2 – Il progetto e il repository del corso
+### Lezione 3 – Il progetto e il repository del corso
 
 Organizzare i file e usare GitHub come semplice cartella di supporto.
 
-### Episodio 3 – Cos’è Quarto e cos’è un file .qmd
+### Lezione 4 – Cos’è Quarto e cos’è un file .qmd
 
 Titoli, testo ed elementi statici del report.
 
@@ -75,19 +75,19 @@ Titoli, testo ed elementi statici del report.
 
 ## Parte 2 – Importare i dati
 
-### Episodio 4 – Importare dati CSV
+### Lezione 5 – Importare dati CSV
 
 Leggere correttamente file CSV.
 
-### Episodio 5 – Importare dati da Excel
+### Lezione 6 – Importare dati da Excel
 
 Installare una libreria e leggere file Excel.
 
-### Episodio 6 – Esplorare i dati
+### Lezione 7 – Esplorare i dati
 
 Capire cosa c’è nei dati prima di usarli.
 
-### Episodio 7 – Modificare i nomi delle colonne
+### Lezione 8 – Modificare i nomi delle colonne
 
 Rendere le informazioni del dataset più leggibili e accessibili.
 
@@ -95,7 +95,7 @@ Rendere le informazioni del dataset più leggibili e accessibili.
 
 ## Parte 4 – Cercare aiuto e leggere codice
 
-### Episodio 8 – Help, Google, Stack Overflow e esempi minimi
+### Lezione 9 – Help, Google, Stack Overflow e esempi minimi
 
 Come chiedere aiuto e come capire le risposte.
 
@@ -103,19 +103,19 @@ Come chiedere aiuto e come capire le risposte.
 
 ## Parte 5 – Pulire e organizzare i dati con `data.table`
 
-### Episodio 9 – Sintassi base di `data.table` e filtri
+### Lezione 10 – Sintassi base di `data.table` e filtri
 
 Selezionare i dati in modo chiaro ed efficiente.
 
-### Episodio 10 – Modificare i dati
+### Lezione 11 – Modificare i dati
 
 Aggiornare e trasformare colonne.
 
-### Episodio 11 – Calcolare nuove colonne
+### Lezione 12 – Calcolare nuove colonne
 
 Aggiungere informazioni.
 
-### Episodio 12 – Districare le informazioni
+### Lezione 13 – Districare le informazioni
 
 Caso reale completo usando quanto imparato.
 
@@ -123,23 +123,23 @@ Caso reale completo usando quanto imparato.
 
 ## Parte 6 – Preparare i risultati
 
-### Episodio 13 – Riassumere i dati
+### Lezione 14 – Riassumere i dati
 
 Conteggi, medie, mediane e aggregazioni.
 
-### Episodio 14 – Grafici
+### Lezione 15 – Grafici
 
 Creare grafici semplici e leggibili per un report.
 
-### Episodio 15 – Calcoli in linea
+### Lezione 16 – Calcoli in linea
 
 Integrare i risultati di calcoli direttamente nel testo.
 
-### Episodio 16 – Unire dati
+### Lezione 17 – Unire dati
 
 Collegare tabelle diverse quando serve.
 
-### Episodio 17 – Tabelle nel report
+### Lezione 18 – Tabelle nel report
 
 Creare tabelle leggibili con `kable`.
 
@@ -147,11 +147,11 @@ Creare tabelle leggibili con `kable`.
 
 ## Parte 7 – Il report automatico
 
-### Episodio 18 – Parametri nel report
+### Lezione 19 – Parametri nel report
 
 Preparare il report al suo riutilizzo.
 
-### Episodio 19 – La fabbrica di report
+### Lezione 20 – La fabbrica di report
 
 Generare molti report simili scrivendone solo uno.
 
@@ -159,7 +159,7 @@ Generare molti report simili scrivendone solo uno.
 
 ## Parte 8 – Il tocco finale
 
-### Episodio 20 – Output finali e formati
+### Lezione 21 – Output finali e formati
 
 HTML, PDF, Word e controllo dei chunk.
 

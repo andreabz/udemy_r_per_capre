@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per gli episodi 10, 11 e 12 - modificare i dati"
+subtitle: "Materiale di supporto per le lezioni 11, 12 e 13 - modificare i dati"
 lang: it
 format:
   pdf:

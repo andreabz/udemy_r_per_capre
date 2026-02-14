@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 15 - calcoli in linea"
+subtitle: "Materiale di supporto per la lezione 16 - calcoli in linea"
 lang: it
 format:
   pdf:

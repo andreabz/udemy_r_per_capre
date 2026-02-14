@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 7 - pulire le intestazioni"
+subtitle: "Materiale di supporto per la lezione 8 - pulire le intestazioni"
 lang: it
 format:
   pdf:

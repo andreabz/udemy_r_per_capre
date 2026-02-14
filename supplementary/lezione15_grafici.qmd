@@ -1,6 +1,6 @@
 ---
 title: "R per capre - dal foglio di calcolo al report automatico"
-subtitle: "Materiale di supporto per l'episodio 14 - i grafici di `ggplot2`"
+subtitle: "Materiale di supporto per la lezione 15 - i grafici di `ggplot2`"
 lang: it
 format:
   pdf:
