@@ -71,7 +71,7 @@ Questi pochi parametri permettono di ottenere risultati **professionali e leggib
 ## In sintesi
 
 - `kable()` trasforma un data frame in una tabella leggibile
-- poche opzioni bastano per un risultato chiaroe
+- poche opzioni bastano per un risultato chiaro e
 - il report resta aggiornabile automaticamente con nuovi dati
 
 Con questo episodio abbiamo completato il report automatico, 
